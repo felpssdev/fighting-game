@@ -14,7 +14,7 @@ c.fillRect(0, 0, canvas.width, canvas.height)
 class Sprite {
 
 // Contains every properties of them
-    constructor({ position, velocity, bodyColor } ) {
+    constructor({ position, velocity, bodyColor }) {
         this.position = position
         this.velocity = velocity
         this.height = 150
@@ -28,6 +28,7 @@ class Sprite {
             width: 100,
             height: 50
         }
+        this.isAttacking
     }
 
 // 'Draw' players body
@@ -36,12 +37,17 @@ class Sprite {
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
 
 // 'Drawing' attack box
-        c.fillStyle = 'yellow'
-        c.fillRect(this.attackHitBox.position.x, this.attackHitBox.position.y, this.attackHitBox.width, this.attackHitBox.height)
+        if(this.isAttacking) {
+            c.fillStyle = 'yellow'
+            c.fillRect(this.attackHitBox.position.x, 
+            this.attackHitBox.position.y, 
+            this.attackHitBox.width, 
+            this.attackHitBox.height)
+        }
     }
 
 // Allow players to respect 'gravity' by always
-// pushing them down if they're not on the page's
+// pulling them down if they're not on the page's
 // 'ground' using gForce variable declared ahead, and so, change their position with
 // velocity atribute
     update() {
@@ -55,6 +61,14 @@ class Sprite {
         } else {
             this.velocity.y += gForce
         }
+    }
+
+// Atacking method
+    attack() {
+        this.isAttacking = true
+        setTimeout(() => {
+            this.isAttacking = false
+        }, 100)
     }
 }
 
@@ -138,7 +152,9 @@ function animate() {
     if (player.attackHitBox.position.x + player.attackHitBox.width >= enemy.position.x && 
         player.attackHitBox.position.x <= enemy.position.x + enemy.width && 
         player.attackHitBox.position.y + player.attackHitBox.height >= enemy.position.y &&
-        player.attackHitBox.position.y <= enemy.position.y + enemy.height) {
+        player.attackHitBox.position.y <= enemy.position.y + enemy.height &&
+        player.isAttacking) {
+        player.isAttacking = false
         console.log('touched');
     }
 }
@@ -161,6 +177,9 @@ window.addEventListener('keydown', (event) => {
             break
         case 'w':
             player.velocity.y = -10
+            break
+        case ' ':
+            player.attack()
             break
 
 // Enemy keys event
