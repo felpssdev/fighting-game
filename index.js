@@ -4,7 +4,8 @@ const c = canvas.getContext('2d')
 canvas.width = 1024
 canvas.height = 576
 
-const gForce = 0.15
+// Gravitional force
+const gForce = 0.225
 
 // Create game's screen
 c.fillRect(0, 0, canvas.width, canvas.height)
@@ -13,17 +14,30 @@ c.fillRect(0, 0, canvas.width, canvas.height)
 class Sprite {
 
 // Contains every properties of them
-    constructor({ position, velocity } ) {
+    constructor({ position, velocity, bodyColor } ) {
         this.position = position
         this.velocity = velocity
         this.height = 150
+        this.width = 50
         this.lastPressedKey
+        this.bodyColor = bodyColor
+
+// Atack box!
+        this.attackHitBox = {
+            position: this.position,
+            width: 100,
+            height: 50
+        }
     }
 
 // 'Draw' players body
     draw() {
-        c.fillStyle = 'red'
-        c.fillRect(this.position.x, this.position.y, 50, this.height)
+        c.fillStyle = this.bodyColor
+        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+
+// 'Drawing' attack box
+        c.fillStyle = 'yellow'
+        c.fillRect(this.attackHitBox.position.x, this.attackHitBox.position.y, this.attackHitBox.width, this.attackHitBox.height)
     }
 
 // Allow players to respect 'gravity' by always
@@ -53,7 +67,8 @@ const player = new Sprite({
     velocity: {
         x: 0,
         y: 0
-    }
+    },
+    bodyColor: 'blue'
 })
 
 // Creation of enemy
@@ -65,7 +80,8 @@ const enemy = new Sprite({
     velocity: {
         x: 0,
         y: 0
-    }
+    },
+    bodyColor: 'red'
 })
 
 // Keys object, all keys that I used to make movements
@@ -87,8 +103,6 @@ const keys = {
     }
 }
 
-let lastPressedKey
-
 // Game start
 function animate() {
 
@@ -107,17 +121,25 @@ function animate() {
 // the character would not listen to that event
 
 // Player movement
-    if (keys.a.pressed && lastPressedKey === 'a') {
-        player.velocity.x = -1
-    } else if (keys.d.pressed && lastPressedKey === 'd') {
-        player.velocity.x = 1
+    if (keys.a.pressed && player.lastPressedKey === 'a') {
+        player.velocity.x = -3
+    } else if (keys.d.pressed && player.lastPressedKey === 'd') {
+        player.velocity.x = 3
     }
 
 // Enemy movement
     if (keys.ArrowLeft.pressed && enemy.lastPressedKey === 'ArrowLeft') {
-        enemy.velocity.x = -1
+        enemy.velocity.x = -3
     } else if (keys.ArrowRight.pressed && enemy.lastPressedKey === 'ArrowRight') {
-        enemy.velocity.x = 1
+        enemy.velocity.x = 3
+    }
+
+// Detect collision
+    if (player.attackHitBox.position.x + player.attackHitBox.width >= enemy.position.x && 
+        player.attackHitBox.position.x <= enemy.position.x + enemy.width && 
+        player.attackHitBox.position.y + player.attackHitBox.height >= enemy.position.y &&
+        player.attackHitBox.position.y <= enemy.position.y + enemy.height) {
+        console.log('touched');
     }
 }
 
@@ -131,11 +153,11 @@ window.addEventListener('keydown', (event) => {
 // Player keys event
         case 'd':
             keys.d.pressed = true
-            lastPressedKey = 'd'
+            player.lastPressedKey = 'd'
             break
         case 'a':
             keys.a.pressed = true
-            lastPressedKey = 'a'
+            player.lastPressedKey = 'a'
             break
         case 'w':
             player.velocity.y = -10
