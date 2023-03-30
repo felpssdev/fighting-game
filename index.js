@@ -14,7 +14,7 @@ c.fillRect(0, 0, canvas.width, canvas.height)
 class Sprite {
 
 // Contains every properties of them
-    constructor({ position, velocity, bodyColor }) {
+    constructor({ position, velocity, bodyColor, offSet }) {
         this.position = position
         this.velocity = velocity
         this.height = 150
@@ -24,7 +24,11 @@ class Sprite {
 
 // Atack box!
         this.attackHitBox = {
-            position: this.position,
+            position: {
+                x: this.position.x,
+                y: this.position.y
+            },
+            offSet,
             width: 100,
             height: 50
         }
@@ -53,9 +57,15 @@ class Sprite {
     update() {
         this.draw()
 
+// Invert enemy's attack
+        this.attackHitBox.position.x = this.position.x + this.attackHitBox.offSet.x
+        this.attackHitBox.position.y = this.position.y
+
+// Allow velocity
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
 
+// Gravity effect
         if(this.position.y + this.height + this.velocity.y >= canvas.height) {
             this.velocity.y = 0
         } else {
@@ -82,7 +92,11 @@ const player = new Sprite({
         x: 0,
         y: 0
     },
-    bodyColor: 'blue'
+    bodyColor: 'blue',
+    offSet: {
+        x: 0,
+        y: 0
+    }
 })
 
 // Creation of enemy
@@ -95,7 +109,11 @@ const enemy = new Sprite({
         x: 0,
         y: 0
     },
-    bodyColor: 'red'
+    bodyColor: 'red',
+    offSet: {
+        x: -50,
+        y: 0
+    }
 })
 
 // Keys object, all keys that I used to make movements
@@ -115,6 +133,15 @@ const keys = {
     ArrowLeft: {
         pressed: false
     }
+}
+
+function detectCollision({ rec1, rec2 }) {
+    return (
+        rec1.attackHitBox.position.x + rec1.attackHitBox.width >= rec2.position.x && 
+        rec1.attackHitBox.position.x <= rec2.position.x + rec2.width && 
+        rec1.attackHitBox.position.y + rec1.attackHitBox.height >= rec2.position.y &&
+        rec1.attackHitBox.position.y <= rec2.position.y + rec2.height
+    )
 }
 
 // Game start
@@ -149,13 +176,17 @@ function animate() {
     }
 
 // Detect collision
-    if (player.attackHitBox.position.x + player.attackHitBox.width >= enemy.position.x && 
-        player.attackHitBox.position.x <= enemy.position.x + enemy.width && 
-        player.attackHitBox.position.y + player.attackHitBox.height >= enemy.position.y &&
-        player.attackHitBox.position.y <= enemy.position.y + enemy.height &&
-        player.isAttacking) {
+
+// Player attacking check
+    if (detectCollision({rec1: player, rec2: enemy }) && player.isAttacking) {
         player.isAttacking = false
         console.log('touched');
+    }
+
+// Enemy attacking check
+    if (detectCollision({rec1: enemy, rec2: player }) && enemy.isAttacking) {
+        enemy.isAttacking = false
+        console.log('touched by enemy');
     }
 }
 
@@ -193,6 +224,9 @@ window.addEventListener('keydown', (event) => {
             break
         case 'ArrowUp':
             enemy.velocity.y = -10
+            break
+        case 'ArrowDown':
+            enemy.attack()
             break
     }
 })
