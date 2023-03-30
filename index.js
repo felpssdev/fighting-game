@@ -135,6 +135,7 @@ const keys = {
     }
 }
 
+// Collision verification for attacks
 function detectCollision({ rec1, rec2 }) {
     return (
         rec1.attackHitBox.position.x + rec1.attackHitBox.width >= rec2.position.x && 
