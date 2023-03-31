@@ -146,6 +146,24 @@ function detectCollision({ rec1, rec2 }) {
 }
 
 const startButton = document.querySelector('#start')
+let timer = 10
+
+function decreaseTimer() {
+    const enemyHealthBar = document.querySelector('#enemyHealthBar')
+    const playerHealthBar = document.querySelector('#playerHealthBar')
+    if (timer > 0) {
+        setTimeout(decreaseTimer, 1000)
+        timer --
+        document.querySelector('#timer').innerHTML = timer
+    }
+
+    if (timer === 0) {
+        if (parseInt(playerHealthBar.style.width) === parseInt(enemyHealthBar.style.width)) {
+            document.querySelector('#display-result').innerHTML = 'Tie'
+            document.querySelector('#display-result').style.display = 'flex'
+        }
+    }
+}
 
 // Game start
 function animate() {
@@ -200,7 +218,10 @@ function animate() {
 }
 
 // Initiate animations
-startButton.addEventListener('click', animate)
+startButton.addEventListener('click', () => {
+    animate()
+    decreaseTimer()
+})
 
 // Allow players to move on keydown events
 window.addEventListener('keydown', (event) => {

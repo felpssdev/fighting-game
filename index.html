@@ -1,38 +1,95 @@
 <head>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-    </style>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+  </style>
 </head>
 <body>
-    <!-- Main div -->
-    <div style="display: inline-block; position: relative;">
-        <!-- Health bars div -->
-        <div style="display: flex; width: 100%; height: 50px; position: absolute;">
-            <!-- Player health bar -->
-            <div style="position: relative; height: 50px; width: 100%; display: flex; justify-content: flex-end;">
-                <div style="background-color: yellow; height: 50px; width: 100%;"></div>
-                <div id='playerHealthBar' style="position: absolute; background: blue; top: 0; bottom: 0; right: 0; width: 100%;"></div>
-            </div>
+  <!-- Main div -->
+  <div style="display: inline-block; position: relative">
+    <!-- Health bars div -->
+    <div style="display: flex; width: 100%; height: 50px; position: absolute">
+      <!-- Player health bar -->
+      <div
+        style="
+          position: relative;
+          height: 50px;
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+        "
+      >
+        <div style="background-color: yellow; height: 50px; width: 100%"></div>
+        <div
+          id="playerHealthBar"
+          style="
+            position: absolute;
+            background: blue;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+          "
+        ></div>
+      </div>
 
-            <!-- Separator -->
-            <div style="background-color: darkgreen; height: 60px; width: 40px; flex-shrink: 0;"></div>
+      <!-- Separator -->
+      <div
+        id="timer"
+        style="
+          background-color: darkgreen;
+          height: 60px;
+          width: 40px;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        10
+      </div>
 
-            <!-- Enemy health bar -->
-            <div style="position: relative; height: 50px; width: 100%;">
-                <div  style="background-color: yellow; height: 50px;"></div>
-                <div id='enemyHealthBar' style="position: absolute; background: red; top: 0; bottom: 0; left: 0; right: 0; width: 100%;"></div>
-            </div>
-        </div>
-        <div style="position: absolute; top: 40%; left: 44%;">
-            <button id='start' style="padding: 40px;">START!</button>
-        </div>
-        <canvas></canvas>   
+      <!-- Enemy health bar -->
+      <div style="position: relative; height: 50px; width: 100%">
+        <div style="background-color: yellow; height: 50px"></div>
+        <div
+          id="enemyHealthBar"
+          style="
+            position: absolute;
+            background: red;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+          "
+        ></div>
+      </div>
     </div>
-    
+    <div style="position: absolute; top: 40%; left: 44%">
+      <button id="start" style="padding: 40px">START!</button>
+    </div>
+    <div
+    id="display-result"
+      style="
+        position: absolute;
+        color: white;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      "
+    >
+      TIE
+    </div>
+    <canvas></canvas>
+  </div>
 </body>
 
 <script src="index.js"></script>
