@@ -5,7 +5,7 @@ canvas.width = 1024
 canvas.height = 576
 
 // Gravitional force
-const gForce = 0.225
+const gForce = 0.4
 
 // Create game's screen
 c.fillRect(0, 0, canvas.width, canvas.height)
@@ -179,15 +179,19 @@ function animate() {
 // Detect collision
 
 // Player attacking check
-    if (detectCollision({ rec1: player, rec2: enemy }) && player.isAttacking) {
+    if (detectCollision({rec1: player, rec2: enemy }) && player.isAttacking) {
         player.isAttacking = false
-        console.log('touched');
+        const enemyHealthBar = document.querySelector('#enemyHealthBar')
+        const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 10
+        enemyHealthBar.style.width = enemyHealthBarWidth + '%'
     }
 
 // Enemy attacking check
-    if (detectCollision({ rec1: enemy, rec2: player }) && enemy.isAttacking) {
+    if (detectCollision({rec1: enemy, rec2: player }) && enemy.isAttacking) {
         enemy.isAttacking = false
-        console.log('touched by enemy');
+        const playerHealthBar = document.querySelector('#playerHealthBar')
+        const playerHealthBarWidth = parseInt(playerHealthBar.style.width) - 10
+        playerHealthBar.style.width = playerHealthBarWidth + '%'
     }
 }
 
