@@ -85,8 +85,8 @@ class Sprite {
 // Creation of player
 const player = new Sprite({
     position: {
-        x: 0,
-        y: 0
+        x: 300,
+        y: 100
     },
     velocity: {
         x: 0,
@@ -102,7 +102,7 @@ const player = new Sprite({
 // Creation of enemy
 const enemy = new Sprite({
     position: {
-        x: 400,
+        x: 700,
         y: 100
     },
     velocity: {
@@ -145,8 +145,12 @@ function detectCollision({ rec1, rec2 }) {
     )
 }
 
+const startButton = document.querySelector('#start')
+
 // Game start
 function animate() {
+// Remove button at start of the game
+    startButton.style.display = 'none'
 
 // Animation loop that keep everything running
     window.requestAnimationFrame(animate)
@@ -195,8 +199,8 @@ function animate() {
     }
 }
 
-// Initiate function
-animate()
+// Initiate animations
+startButton.addEventListener('click', animate)
 
 // Allow players to move on keydown events
 window.addEventListener('keydown', (event) => {
