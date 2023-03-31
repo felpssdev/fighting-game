@@ -217,4 +217,10 @@ window.onload = () => {
           event.preventDefault();
         }
     });
+
+// Replay
+    audio.addEventListener("ended", function() {
+        this.currentTime = 0
+        this.play()
+      })
 }
