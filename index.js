@@ -145,12 +145,26 @@ function detectCollision({ rec1, rec2 }) {
     )
 }
 
-const startButton = document.querySelector('#start')
+
+const playerHealthBar = document.querySelector('#playerHealthBar')
+const enemyHealthBar = document.querySelector('#enemyHealthBar')
+
+// Verify who wins and display
+function winner() {
+    document.querySelector('#display-result').style.display = 'flex'
+    if (parseInt(playerHealthBar.style.width) === parseInt(enemyHealthBar.style.width)) {
+        document.querySelector('#display-result').innerHTML = 'Tie'
+    } else if (parseInt(playerHealthBar.style.width) > parseInt(enemyHealthBar.style.width)) {
+        document.querySelector('#display-result').innerHTML = 'Player Wins!'
+    } else if (parseInt(playerHealthBar.style.width) < parseInt(enemyHealthBar.style.width)) {
+        document.querySelector('#display-result').innerHTML = 'Enemy Wins!'
+    }
+}
+
 let timer = 10
 
+// Timer function that calls winner function
 function decreaseTimer() {
-    const enemyHealthBar = document.querySelector('#enemyHealthBar')
-    const playerHealthBar = document.querySelector('#playerHealthBar')
     if (timer > 0) {
         setTimeout(decreaseTimer, 1000)
         timer --
@@ -158,12 +172,11 @@ function decreaseTimer() {
     }
 
     if (timer === 0) {
-        if (parseInt(playerHealthBar.style.width) === parseInt(enemyHealthBar.style.width)) {
-            document.querySelector('#display-result').innerHTML = 'Tie'
-            document.querySelector('#display-result').style.display = 'flex'
-        }
+        winner()
     }
 }
+
+const startButton = document.querySelector('#start')
 
 // Game start
 function animate() {
@@ -203,7 +216,6 @@ function animate() {
 // Player attacking check
     if (detectCollision({rec1: player, rec2: enemy }) && player.isAttacking) {
         player.isAttacking = false
-        const enemyHealthBar = document.querySelector('#enemyHealthBar')
         const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 10
         enemyHealthBar.style.width = enemyHealthBarWidth + '%'
     }
@@ -211,17 +223,15 @@ function animate() {
 // Enemy attacking check
     if (detectCollision({rec1: enemy, rec2: player }) && enemy.isAttacking) {
         enemy.isAttacking = false
-        const playerHealthBar = document.querySelector('#playerHealthBar')
         const playerHealthBarWidth = parseInt(playerHealthBar.style.width) - 10
         playerHealthBar.style.width = playerHealthBarWidth + '%'
     }
-}
 
-// Initiate animations
-startButton.addEventListener('click', () => {
-    animate()
-    decreaseTimer()
-})
+// End the game based on health
+   if (parseInt(playerHealthBar.style.width) <= 0 || parseInt(enemyHealthBar.style.width) <= 0) {
+        winner()
+   }
+}
 
 // Allow players to move on keydown events
 window.addEventListener('keydown', (event) => {
@@ -282,4 +292,10 @@ window.addEventListener('keyup', (event) => {
             keys.ArrowLeft.pressed = false
             break
     }
+})
+
+// Initiate animations
+startButton.addEventListener('click', () => {
+    animate()
+    decreaseTimer()
 })
