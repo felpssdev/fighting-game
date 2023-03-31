@@ -179,13 +179,13 @@ function animate() {
 // Detect collision
 
 // Player attacking check
-    if (detectCollision({rec1: player, rec2: enemy }) && player.isAttacking) {
+    if (detectCollision({ rec1: player, rec2: enemy }) && player.isAttacking) {
         player.isAttacking = false
         console.log('touched');
     }
 
 // Enemy attacking check
-    if (detectCollision({rec1: enemy, rec2: player }) && enemy.isAttacking) {
+    if (detectCollision({ rec1: enemy, rec2: player }) && enemy.isAttacking) {
         enemy.isAttacking = false
         console.log('touched by enemy');
     }
