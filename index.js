@@ -145,12 +145,13 @@ function detectCollision({ rec1, rec2 }) {
     )
 }
 
-
+// Players helth bars
 const playerHealthBar = document.querySelector('#playerHealthBar')
 const enemyHealthBar = document.querySelector('#enemyHealthBar')
 
 // Verify who wins and display
-function winner() {
+function winner(moment) {
+    clearTimeout(moment)
     document.querySelector('#display-result').style.display = 'flex'
     if (parseInt(playerHealthBar.style.width) === parseInt(enemyHealthBar.style.width)) {
         document.querySelector('#display-result').innerHTML = 'Tie'
@@ -162,17 +163,18 @@ function winner() {
 }
 
 let timer = 10
+let moment
 
 // Timer function that calls winner function
 function decreaseTimer() {
     if (timer > 0) {
-        setTimeout(decreaseTimer, 1000)
+        moment = setTimeout(decreaseTimer, 1000)
         timer --
         document.querySelector('#timer').innerHTML = timer
     }
 
     if (timer === 0) {
-        winner()
+        winner(moment)
     }
 }
 
@@ -229,7 +231,7 @@ function animate() {
 
 // End the game based on health
    if (parseInt(playerHealthBar.style.width) <= 0 || parseInt(enemyHealthBar.style.width) <= 0) {
-        winner()
+        winner(moment)
    }
 }
 
