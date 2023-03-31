@@ -202,6 +202,7 @@ startButton.addEventListener('click', () => {
 // Render background image
 window.onload = () => {
     background.update()
+
 // Sound
     switchBtn.addEventListener('change', function() {
         if (this.checked) {
@@ -223,4 +224,9 @@ window.onload = () => {
         this.currentTime = 0
         this.play()
       })
+
+    const resetBtn = document.querySelector('#reset-btn')
+    resetBtn.addEventListener('click', () => {
+        window.location.reload()
+    })
 }
