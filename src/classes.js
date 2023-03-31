@@ -53,7 +53,7 @@ class Player {
         this.position.y += this.velocity.y
 
 // Gravity effect
-        if(this.position.y + this.height + this.velocity.y >= canvas.height) {
+        if (this.position.y + this.height + this.velocity.y >= canvas.height - 95) {
             this.velocity.y = 0
         } else {
             this.velocity.y += gForce
