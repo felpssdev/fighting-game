@@ -189,6 +189,10 @@ window.addEventListener('keyup', (event) => {
     }
 })
 
+
+const switchBtn = document.querySelector('#switch-sound')
+const audio = document.querySelector('#music-theme')
+
 // Initiate animations
 startButton.addEventListener('click', () => {
     animate()
@@ -198,4 +202,19 @@ startButton.addEventListener('click', () => {
 // Render background image
 window.onload = () => {
     background.update()
+// Sound
+    switchBtn.addEventListener('change', function() {
+        if (this.checked) {
+            audio.play()
+        } else {
+            audio.pause()
+        }
+    })
+
+// Prevent checkbox to uncheck when 'space' is pressed
+    document.addEventListener("keydown", function(event) {
+        if (event.code === "Space") {
+          event.preventDefault();
+        }
+    });
 }

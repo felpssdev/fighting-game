@@ -6,6 +6,7 @@
       box-sizing: border-box;
     }
   </style>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
   <!-- Main div -->
@@ -71,6 +72,14 @@
     </div>
     <div style="position: absolute; top: 40%; left: 44%">
       <button id="start" style="padding: 40px">START!</button>
+    </div>
+    <div id="sound">
+      <label class="switch"> 🔊
+        <input id='switch-sound' type="checkbox">
+        <audio id="music-theme">
+          <source src="sounds/videoplayback.mp3" type="audio/mpeg">
+        </audio>
+      </label>
     </div>
     <div
     id="display-result"
