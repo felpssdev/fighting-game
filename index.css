@@ -3,16 +3,23 @@
     top: 515px;
     left: 30px;
     background-color: rgba(255, 255, 255, 0.2);
-    padding: 8px;
+    padding: 8px 8px 8px 35px;
     border-radius: 4px;
 }
 
+#sound span {
+    font-size: 20px;
+    position: absolute;
+    top: 7;
+    left: 2;
+}
+
 .switch {
-    --false: #E81B1B;
-    --true: #009068;
-   }
-   
-   input[type=checkbox] {
+ --false: #E81B1B;
+ --true: #009068;
+}
+
+input[type=checkbox] {
     appearance: none;
     height: 1.3rem;
     width: 3.5rem;
@@ -20,9 +27,9 @@
     position: relative;
     border-radius: .2em;
     cursor: pointer;
-   }
-   
-   input[type=checkbox]::before {
+}
+
+input[type=checkbox]::before {
     content: '';
     display: block;
     height: 1.5em;
@@ -34,9 +41,9 @@
     background-color: var(--false);
     border-radius: .2em;
     transition: .3s ease;
-   }
-   
-   input[type=checkbox]:checked::before {
+}
+
+input[type=checkbox]:checked::before {
     background-color: var(--true);
     left: calc(100% - (1.9em/2 + .3em));
-   }
+}

@@ -6,32 +6,42 @@
       box-sizing: border-box;
     }
   </style>
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="index.css" />
 </head>
 <body>
   <!-- Main div -->
   <div style="display: inline-block; position: relative">
     <!-- Health bars div -->
-    <div style="display: flex; width: 100%; height: 50px; position: absolute">
+    <div
+      style="
+        position: absolute;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        padding: 20px;
+      "
+    >
       <!-- Player health bar -->
       <div
         style="
           position: relative;
-          height: 50px;
           width: 100%;
           display: flex;
           justify-content: flex-end;
+          border-top: 4px solid white;
+          border-left: 4px solid white;
+          border-bottom: 4px solid white;
         "
       >
-        <div style="background-color: yellow; height: 50px; width: 100%"></div>
+        <div style="background-color: yellow; height: 30px; width: 100%"></div>
         <div
           id="playerHealthBar"
           style="
             position: absolute;
             background: blue;
             top: 0;
-            bottom: 0;
             right: 0;
+            bottom: 0;
             width: 100%;
           "
         ></div>
@@ -43,30 +53,40 @@
         style="
           background-color: darkgreen;
           height: 60px;
-          width: 40px;
+          width: 60px;
           flex-shrink: 0;
           display: flex;
           align-items: center;
           justify-content: center;
+          color: white;
+          font-size: xx-large;
+          font-weight: 700;
+          border: 4px solid white;
         "
       >
         60
       </div>
 
       <!-- Enemy health bar -->
-      <div style="position: relative; height: 50px; width: 100%">
-        <div style="background-color: yellow; height: 50px;"></div>
+      <div  style="
+      position: relative;
+      width: 100%;
+      border-top: 4px solid white;
+      border-bottom: 4px solid white;
+      border-right: 4px solid white;
+    ">
+        <div style="background-color: yellow; height: 30px"></div>
         <div
           id="enemyHealthBar"
           style="
-            position: absolute;
-            background: red;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-          "
+          position: absolute;
+          background: red;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+        "
         ></div>
       </div>
     </div>
@@ -74,15 +94,16 @@
       <button id="start" style="padding: 40px">START!</button>
     </div>
     <div id="sound">
-      <label class="switch"> 🔊
-        <input id='switch-sound' type="checkbox">
+      <label class="switch"
+        ><span>🔊</span>
+        <input id="switch-sound" type="checkbox" />
         <audio id="music-theme">
-          <source src="sounds/videoplayback.mp3" type="audio/mpeg">
+          <source src="sounds/videoplayback.mp3" type="audio/mpeg" />
         </audio>
       </label>
     </div>
     <div
-    id="display-result"
+      id="display-result"
       style="
         position: absolute;
         color: white;
