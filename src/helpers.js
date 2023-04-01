@@ -28,6 +28,8 @@ function winner(moment) {
     parseInt(enemyHealthBar.style.width)
   ) {
     document.querySelector('#display-result').innerHTML = 'Tie'
+    player.switchSprite('death')
+    enemy.switchSprite('death')
   } else if (
     parseInt(playerHealthBar.style.width) > parseInt(enemyHealthBar.style.width)
   ) {

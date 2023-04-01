@@ -7,6 +7,7 @@ class Sprite {
     totalFrames = 1,
     offSet = { x: 0, y: 0 },
   }) {
+
     this.position = position
     this.height = 150
     this.width = 50
@@ -100,6 +101,7 @@ class Player extends Sprite {
     this.frameHold = 12
     this.sprites = sprites
     this.dead = false
+    this.maxJumps = 0
 
     // Create image for each sprite
     for (const sprite in this.sprites) {
@@ -130,6 +132,7 @@ class Player extends Sprite {
     // Gravity effect
     if (this.position.y + this.height + this.velocity.y >= canvas.height - 95) {
       this.velocity.y = 0
+      this.maxJumps = 0
     } else {
       this.velocity.y += gForce
     }
@@ -142,9 +145,9 @@ class Player extends Sprite {
 
     // Atacking sounds
     const cutSound = document.querySelector('#cut-sound')
+    const swordSound = document.querySelector('#cut-sound-enemy')
 
     if (enemy) {
-        const swordSound = document.querySelector('#cut-sound-enemy')
         if (!swordSound.muted) {
             swordSound.play()
         }
