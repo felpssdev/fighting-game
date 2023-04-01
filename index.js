@@ -80,6 +80,35 @@ const enemy = new Player({
     x: -50,
     y: 0,
   },
+  imageSrc: './img/kenji/Idle.png',
+  totalFrames: 4,
+  scale: 2.2,
+  offSet: {
+    x: 215,
+    y: 130
+  },
+  sprites: {
+    idle: {
+        imageSrc: './img/kenji/Idle.png',
+        totalFrames: 4
+    },
+    run: {
+        imageSrc: './img/kenji/Run.png',
+        totalFrames: 8
+    },
+    jump: {
+        imageSrc: './img/kenji/Jump.png',
+        totalFrames: 2
+    },
+    fall: {
+        imageSrc: './img/kenji/Fall.png',
+        totalFrames: 2
+    },
+    attack1: {
+        imageSrc: './img/kenji/Attack1.png',
+        totalFrames: 4
+    }
+  }
 })
 
 // All keys that I used to make movements
@@ -112,7 +141,7 @@ function animate() {
   window.requestAnimationFrame(animate)
   background.update()
   player.update()
-  // enemy.update()
+  enemy.update()
 
   // Set players to stop untill an event is listened
   player.velocity.x = 0
@@ -142,8 +171,19 @@ function animate() {
   // Enemy movement
   if (keys.ArrowLeft.pressed && enemy.lastPressedKey === 'ArrowLeft') {
     enemy.velocity.x = -3
+    enemy.switchSprite('run')
   } else if (keys.ArrowRight.pressed && enemy.lastPressedKey === 'ArrowRight') {
     enemy.velocity.x = 3
+    enemy.switchSprite('run')
+  } else {
+    enemy.switchSprite('idle')
+  }
+
+  // Enemy jump
+  if (enemy.velocity.y < 0) {
+    enemy.switchSprite('jump')
+  } else if (enemy.velocity.y > 0) {
+    enemy.switchSprite('fall')
   }
 
   // Detect collision
