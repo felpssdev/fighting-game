@@ -40,6 +40,24 @@ const player = new Player({
   offSet: {
     x: 215,
     y: 118
+  },
+  sprites: {
+    idle: {
+        imageSrc: './img/samuraiMack/Idle.png',
+        totalFrames: 8
+    },
+    run: {
+        imageSrc: './img/samuraiMack/Run.png',
+        totalFrames: 8
+    },
+    jump: {
+        imageSrc: './img/samuraiMack/Jump.png',
+        totalFrames: 2
+    },
+    fall: {
+        imageSrc: './img/samuraiMack/Fall.png',
+        totalFrames: 2
+    }
   }
 })
 
@@ -90,7 +108,7 @@ function animate() {
   window.requestAnimationFrame(animate)
   background.update()
   player.update()
-  enemy.update()
+  // enemy.update()
 
   // Set players to stop untill an event is listened
   player.velocity.x = 0
@@ -102,8 +120,19 @@ function animate() {
   // Player movement
   if (keys.a.pressed && player.lastPressedKey === 'a') {
     player.velocity.x = -3
+    player.switchSprite('run')
   } else if (keys.d.pressed && player.lastPressedKey === 'd') {
     player.velocity.x = 3
+    player.switchSprite('run')
+  } else {
+    player.switchSprite('idle')
+  }
+
+  // Player jump
+  if (player.velocity.y < 0) {
+    player.switchSprite('jump')
+  } else if (player.velocity.y > 0) {
+    player.switchSprite('fall')
   }
 
   // Enemy movement

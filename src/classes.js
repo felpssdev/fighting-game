@@ -64,6 +64,7 @@ class Player extends Sprite {
     scale = 1,
     totalFrames = 1,
     offSet = { x: 0, y: 0 },
+    sprites,
   }) {
     // Inherit Sprite's properties
     super({
@@ -94,6 +95,12 @@ class Player extends Sprite {
     this.currentFrame = 0
     this.framesElapsed = 0
     this.frameHold = 9
+    this.sprites = sprites
+
+    for (const sprite in this.sprites) {
+      sprites[sprite].image = new Image()
+      sprites[sprite].image.src = sprites[sprite].imageSrc
+    }
   }
 
   // Allow players to respect 'gravity' by always
@@ -128,5 +135,38 @@ class Player extends Sprite {
     setTimeout(() => {
       this.isAttacking = false
     }, 300)
+  }
+
+  switchSprite(sprite) {
+    switch (sprite) {
+      case 'idle':
+        if (this.image !== this.sprites.idle.image) {
+          this.image = this.sprites.idle.image
+          this.totalFrames = this.sprites.idle.totalFrames
+          this.currentFrame = 0
+        }
+        break
+      case 'jump':
+        if (this.image !== this.sprites.jump.image) {
+          this.image = this.sprites.jump.image
+          this.totalFrames = this.sprites.jump.totalFrames
+          this.currentFrame = 0
+        }
+        break
+      case 'run':
+        if (this.image !== this.sprites.run.image) {
+          this.image = this.sprites.run.image
+          this.totalFrames = this.sprites.run.totalFrames
+          this.currentFrame = 0
+        }
+        break
+      case 'fall':
+        if (this.image !== this.sprites.fall.image) {
+          this.image = this.sprites.fall.image
+          this.totalFrames = this.sprites.fall.totalFrames
+          this.currentFrame = 0
+        }
+        break  
+    }
   }
 }
