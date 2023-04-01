@@ -65,6 +65,9 @@ class Player extends Sprite {
     totalFrames = 1,
     offSet = { x: 0, y: 0 },
     sprites,
+    attackBox = {
+        offSet: {}, width: undefined, height: undefined
+    }
   }) {
     // Inherit Sprite's properties
     super({
@@ -87,9 +90,9 @@ class Player extends Sprite {
         x: this.position.x,
         y: this.position.y,
       },
-      offSet,
-      width: 100,
-      height: 50,
+      offSet: attackBox.offSet,
+      width: attackBox.width,
+      height: attackBox.height,
     }
     this.isAttacking
     this.currentFrame = 0
@@ -113,10 +116,10 @@ class Player extends Sprite {
     // Enable character animation
     this.animateFrames()
 
-    // Invert enemy's attack
+    // Attack hitboxes
     this.attackHitBox.position.x = this.position.x + this.attackHitBox.offSet.x
-    this.attackHitBox.position.y = this.position.y
-
+    this.attackHitBox.position.y = this.position.y + this.attackHitBox.offSet.y
+    
     // Allow velocity
     this.position.x += this.velocity.x
     this.position.y += this.velocity.y
@@ -133,9 +136,7 @@ class Player extends Sprite {
   attack() {
     this.switchSprite('attack1')
     this.isAttacking = true
-    setTimeout(() => {
-      this.isAttacking = false
-    }, 300)
+    
   }
 
   // Sprite options

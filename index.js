@@ -62,6 +62,14 @@ const player = new Player({
         imageSrc: './img/samuraiMack/Attack1.png',
         totalFrames: 6
     }
+  },
+  attackBox: {
+    offSet: {
+        x: 90,
+        y: 50
+    },
+    width: 120,
+    height: 50
   }
 })
 
@@ -108,6 +116,14 @@ const enemy = new Player({
         imageSrc: './img/kenji/Attack1.png',
         totalFrames: 4
     }
+  },
+  attackBox: {
+    offSet: {
+        x: -160,
+        y: 50
+    },
+    width: 130,
+    height: 50
   }
 })
 
@@ -188,17 +204,27 @@ function animate() {
 
   // Detect collision
   // Player attacking check
-  if (detectCollision({ rec1: player, rec2: enemy }) && player.isAttacking) {
+  if (detectCollision({ rec1: player, rec2: enemy }) && player.isAttacking && player.currentFrame === 4) {
     player.isAttacking = false
     const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 10
     enemyHealthBar.style.width = enemyHealthBarWidth + '%'
   }
 
+  // Player miss attack
+  if (player.isAttacking && player.currentFrame === 4) {
+    player.isAttacking = false
+  }
+
   // Enemy attacking check
-  if (detectCollision({ rec1: enemy, rec2: player }) && enemy.isAttacking) {
+  if (detectCollision({ rec1: enemy, rec2: player }) && enemy.isAttacking && enemy.currentFrame === 2) {
     enemy.isAttacking = false
     const playerHealthBarWidth = parseInt(playerHealthBar.style.width) - 10
     playerHealthBar.style.width = playerHealthBarWidth + '%'
+  }
+
+  // Enemy miss attack
+  if (enemy.isAttacking && enemy.currentFrame === 2) {
+    enemy.isAttacking = false
   }
 
   // End the game based on health
