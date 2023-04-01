@@ -131,13 +131,23 @@ class Player extends Sprite {
 
   // Atacking method
   attack() {
+    this.switchSprite('attack1')
     this.isAttacking = true
     setTimeout(() => {
       this.isAttacking = false
     }, 300)
   }
 
+  // Sprite options
   switchSprite(sprite) {
+    // Grants that no other action interrupt attack animation
+    if (
+      this.image === this.sprites.attack1.image &&
+      this.currentFrame < this.sprites.attack1.totalFrames - 1
+    ) {
+      return
+    }
+
     switch (sprite) {
       case 'idle':
         if (this.image !== this.sprites.idle.image) {
@@ -166,7 +176,14 @@ class Player extends Sprite {
           this.totalFrames = this.sprites.fall.totalFrames
           this.currentFrame = 0
         }
-        break  
+        break
+      case 'attack1':
+        if (this.image !== this.sprites.attack1.image) {
+          this.image = this.sprites.attack1.image
+          this.totalFrames = this.sprites.attack1.totalFrames
+          this.currentFrame = 0
+        }
+        break
     }
   }
 }

@@ -57,6 +57,10 @@ const player = new Player({
     fall: {
         imageSrc: './img/samuraiMack/Fall.png',
         totalFrames: 2
+    },
+    attack1: {
+        imageSrc: './img/samuraiMack/Attack1.png',
+        totalFrames: 6
     }
   }
 })
