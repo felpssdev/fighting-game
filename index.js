@@ -206,8 +206,13 @@ function animate() {
   // Player attacking check and damage
   if (detectCollision({ rec1: player, rec2: enemy }) && player.isAttacking && player.currentFrame === 4) {
     player.isAttacking = false
-    const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 13
-    enemyHealthBar.style.width = enemyHealthBarWidth + '%'
+    if (parseInt(enemyHealthBar.style.width) < 13) {
+        const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 9 // Bug Mack doesnt kill when enemy's life is bellow 13 health solved
+        enemyHealthBar.style.width = enemyHealthBarWidth + '%'
+    } else {
+        const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 13
+        enemyHealthBar.style.width = enemyHealthBarWidth + '%'
+    }
   }
 
   // Player miss attack
