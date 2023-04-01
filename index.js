@@ -39,38 +39,46 @@ const player = new Player({
   scale: 2.2,
   offSet: {
     x: 215,
-    y: 118
+    y: 118,
   },
   sprites: {
     idle: {
-        imageSrc: './img/samuraiMack/Idle.png',
-        totalFrames: 8
+      imageSrc: './img/samuraiMack/Idle.png',
+      totalFrames: 8,
     },
     run: {
-        imageSrc: './img/samuraiMack/Run.png',
-        totalFrames: 8
+      imageSrc: './img/samuraiMack/Run.png',
+      totalFrames: 8,
     },
     jump: {
-        imageSrc: './img/samuraiMack/Jump.png',
-        totalFrames: 2
+      imageSrc: './img/samuraiMack/Jump.png',
+      totalFrames: 2,
     },
     fall: {
-        imageSrc: './img/samuraiMack/Fall.png',
-        totalFrames: 2
+      imageSrc: './img/samuraiMack/Fall.png',
+      totalFrames: 2,
     },
     attack1: {
-        imageSrc: './img/samuraiMack/Attack1.png',
-        totalFrames: 6
-    }
+      imageSrc: './img/samuraiMack/Attack1.png',
+      totalFrames: 6,
+    },
+    takeDamage: {
+      imageSrc: './img/samuraiMack/Take Hit.png',
+      totalFrames: 4,
+    },
+    death: {
+      imageSrc: './img/samuraiMack/Death.png',
+      totalFrames: 6,
+    },
   },
   attackBox: {
     offSet: {
-        x: 90,
-        y: 50
+      x: 90,
+      y: 50,
     },
     width: 120,
-    height: 50
-  }
+    height: 50,
+  },
 })
 
 // Create enemy
@@ -93,38 +101,46 @@ const enemy = new Player({
   scale: 2.2,
   offSet: {
     x: 215,
-    y: 130
+    y: 130,
   },
   sprites: {
     idle: {
-        imageSrc: './img/kenji/Idle.png',
-        totalFrames: 4
+      imageSrc: './img/kenji/Idle.png',
+      totalFrames: 4,
     },
     run: {
-        imageSrc: './img/kenji/Run.png',
-        totalFrames: 8
+      imageSrc: './img/kenji/Run.png',
+      totalFrames: 8,
     },
     jump: {
-        imageSrc: './img/kenji/Jump.png',
-        totalFrames: 2
+      imageSrc: './img/kenji/Jump.png',
+      totalFrames: 2,
     },
     fall: {
-        imageSrc: './img/kenji/Fall.png',
-        totalFrames: 2
+      imageSrc: './img/kenji/Fall.png',
+      totalFrames: 2,
     },
     attack1: {
-        imageSrc: './img/kenji/Attack1.png',
-        totalFrames: 4
-    }
+      imageSrc: './img/kenji/Attack1.png',
+      totalFrames: 4,
+    },
+    takeDamage: {
+      imageSrc: './img/kenji/Take hit.png',
+      totalFrames: 3,
+    },
+    death: {
+      imageSrc: './img/kenji/Death.png',
+      totalFrames: 7,
+    },
   },
   attackBox: {
     offSet: {
-        x: -160,
-        y: 50
+      x: -160,
+      y: 50,
     },
     width: 130,
-    height: 50
-  }
+    height: 50,
+  },
 })
 
 // All keys that I used to make movements
@@ -157,7 +173,7 @@ function animate() {
 
   // Display game elements at the start of the game
   const names = document.querySelectorAll('.char-name')
-  names.forEach(name => {
+  names.forEach((name) => {
     name.style.display = 'inline'
   })
 
@@ -214,14 +230,25 @@ function animate() {
 
   // Detect collision
   // Player attacking check and damage
-  if (detectCollision({ rec1: player, rec2: enemy }) && player.isAttacking && player.currentFrame === 4) {
+  if (
+    detectCollision({ rec1: player, rec2: enemy }) &&
+    player.isAttacking &&
+    player.currentFrame === 4
+  ) {
     player.isAttacking = false
+
+    if (parseInt(enemyHealthBar.style.width) <= 13) {
+      enemy.switchSprite('death')
+    }
+
+    enemy.switchSprite('takeDamage')
     if (parseInt(enemyHealthBar.style.width) < 13) {
-        const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 9 // Bug Mack doesnt kill when enemy's life is bellow 13 health solved
-        enemyHealthBar.style.width = enemyHealthBarWidth + '%'
+      const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 9 // BUG Mack doesnt kill when enemy's life is bellow 13 health solved
+      enemyHealthBar.style.width = enemyHealthBarWidth + '%'
+      enemy.switchSprite('death')
     } else {
-        const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 13
-        enemyHealthBar.style.width = enemyHealthBarWidth + '%'
+      const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 13
+      enemyHealthBar.style.width = enemyHealthBarWidth + '%'
     }
   }
 
@@ -231,8 +258,18 @@ function animate() {
   }
 
   // Enemy attacking check and damage
-  if (detectCollision({ rec1: enemy, rec2: player }) && enemy.isAttacking && enemy.currentFrame === 2) {
+  if (
+    detectCollision({ rec1: enemy, rec2: player }) &&
+    enemy.isAttacking &&
+    enemy.currentFrame === 2
+  ) {
     enemy.isAttacking = false
+
+    if (parseInt(playerHealthBar.style.width) <= 10) {
+      player.switchSprite('death')
+    }
+
+    player.switchSprite('takeDamage')
     const playerHealthBarWidth = parseInt(playerHealthBar.style.width) - 10
     playerHealthBar.style.width = playerHealthBarWidth + '%'
   }
@@ -253,38 +290,43 @@ function animate() {
 
 // Allow players to move on keydown events
 window.addEventListener('keydown', (event) => {
-  switch (event.key) {
-    // Player keys event
-    case 'd':
-      keys.d.pressed = true
-      player.lastPressedKey = 'd'
-      break
-    case 'a':
-      keys.a.pressed = true
-      player.lastPressedKey = 'a'
-      break
-    case 'w':
-      player.velocity.y = -10
-      break
-    case ' ':
-      player.attack()
-      break
-
-    // Enemy keys event
-    case 'ArrowRight':
-      keys.ArrowRight.pressed = true
-      enemy.lastPressedKey = 'ArrowRight'
-      break
-    case 'ArrowLeft':
-      keys.ArrowLeft.pressed = true
-      enemy.lastPressedKey = 'ArrowLeft'
-      break
-    case 'ArrowUp':
-      enemy.velocity.y = -10
-      break
-    case 'ArrowDown':
-      enemy.attack(true)
-      break
+  // Player keys event
+  if (!player.dead) {
+    switch (event.key) {
+      case 'd':
+        keys.d.pressed = true
+        player.lastPressedKey = 'd'
+        break
+      case 'a':
+        keys.a.pressed = true
+        player.lastPressedKey = 'a'
+        break
+      case 'w':
+        player.velocity.y = -10
+        break
+      case ' ':
+        player.attack()
+        break
+    }
+  }
+  // Enemy keys event
+  if (!enemy.dead) {
+    switch (event.key) {
+      case 'ArrowRight':
+        keys.ArrowRight.pressed = true
+        enemy.lastPressedKey = 'ArrowRight'
+        break
+      case 'ArrowLeft':
+        keys.ArrowLeft.pressed = true
+        enemy.lastPressedKey = 'ArrowLeft'
+        break
+      case 'ArrowUp':
+        enemy.velocity.y = -10
+        break
+      case 'ArrowDown':
+        enemy.attack(true)
+        break
+    }
   }
 })
 

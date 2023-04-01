@@ -97,8 +97,9 @@ class Player extends Sprite {
     this.isAttacking
     this.currentFrame = 0
     this.framesElapsed = 0
-    this.frameHold = 9
+    this.frameHold = 12
     this.sprites = sprites
+    this.dead = false
 
     // Create image for each sprite
     for (const sprite in this.sprites) {
@@ -115,8 +116,9 @@ class Player extends Sprite {
     this.draw()
 
     // Enable character animation
-    this.animateFrames()
-
+    if (!this.dead) {
+      this.animateFrames()
+    }
     // Attack hitboxes
     this.attackHitBox.position.x = this.position.x + this.attackHitBox.offSet.x
     this.attackHitBox.position.y = this.position.y + this.attackHitBox.offSet.y
@@ -155,6 +157,16 @@ class Player extends Sprite {
 
   // Sprite options
   switchSprite(sprite) {
+    // Grants that no other action interrupt death animation
+    if (
+        this.image === this.sprites.death.image
+      ) {
+        if (this.currentFrame === this.sprites.death.totalFrames - 2) {
+            this.dead = true
+        }
+        return
+      }
+
     // Grants that no other action interrupt attack animation
     if (
       this.image === this.sprites.attack1.image &&
@@ -162,6 +174,14 @@ class Player extends Sprite {
     ) {
       return
     }
+
+    // Grants that no other action interrupt take damage animation
+    if (
+        this.image === this.sprites.takeDamage.image &&
+        this.currentFrame < this.sprites.takeDamage.totalFrames - 1
+      ) {
+        return
+      }
 
     switch (sprite) {
       case 'idle':
@@ -196,6 +216,20 @@ class Player extends Sprite {
         if (this.image !== this.sprites.attack1.image) {
           this.image = this.sprites.attack1.image
           this.totalFrames = this.sprites.attack1.totalFrames
+          this.currentFrame = 0
+        }
+        break
+      case 'takeDamage':
+        if (this.image !== this.sprites.takeDamage.image) {
+          this.image = this.sprites.takeDamage.image
+          this.totalFrames = this.sprites.takeDamage.totalFrames
+          this.currentFrame = 0
+        }
+        break
+      case 'death':
+        if (this.image !== this.sprites.death.image) {
+          this.image = this.sprites.death.image
+          this.totalFrames = this.sprites.death.totalFrames
           this.currentFrame = 0
         }
         break
