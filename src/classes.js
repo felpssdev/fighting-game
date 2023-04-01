@@ -100,6 +100,7 @@ class Player extends Sprite {
     this.frameHold = 9
     this.sprites = sprites
 
+    // Create image for each sprite
     for (const sprite in this.sprites) {
       sprites[sprite].image = new Image()
       sprites[sprite].image.src = sprites[sprite].imageSrc

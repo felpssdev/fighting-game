@@ -10,7 +10,7 @@ const gForce = 0.4
 // Create canvas screen
 c.fillRect(0, 0, canvas.width, canvas.height)
 
-// Create background image object
+// Create background image
 const background = new Sprite({
   position: {
     x: 0,
@@ -19,7 +19,7 @@ const background = new Sprite({
   imageSrc: 'img/background.png',
 })
 
-// Creation of player
+// Create player
 const player = new Player({
   position: {
     x: 300,
@@ -73,7 +73,7 @@ const player = new Player({
   }
 })
 
-// Creation of enemy
+// Create enemy
 const enemy = new Player({
   position: {
     x: 700,
@@ -203,10 +203,10 @@ function animate() {
   }
 
   // Detect collision
-  // Player attacking check
+  // Player attacking check and damage
   if (detectCollision({ rec1: player, rec2: enemy }) && player.isAttacking && player.currentFrame === 4) {
     player.isAttacking = false
-    const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 10
+    const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 13
     enemyHealthBar.style.width = enemyHealthBarWidth + '%'
   }
 
@@ -215,7 +215,7 @@ function animate() {
     player.isAttacking = false
   }
 
-  // Enemy attacking check
+  // Enemy attacking check and damage
   if (detectCollision({ rec1: enemy, rec2: player }) && enemy.isAttacking && enemy.currentFrame === 2) {
     enemy.isAttacking = false
     const playerHealthBarWidth = parseInt(playerHealthBar.style.width) - 10
