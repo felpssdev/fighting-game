@@ -242,12 +242,12 @@ function animate() {
     }
 
     enemy.switchSprite('takeDamage')
-    if (parseInt(enemyHealthBar.style.width) < 13) {
-      const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 9 // BUG Mack doesnt kill when enemy's life is bellow 13 health solved
+    if (parseInt(enemyHealthBar.style.width) < 15) {
+      const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 10
       enemyHealthBar.style.width = enemyHealthBarWidth + '%'
       enemy.switchSprite('death')
     } else {
-      const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 13
+      const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 15 // Samurai Mack's damage
       enemyHealthBar.style.width = enemyHealthBarWidth + '%'
     }
   }
@@ -270,7 +270,7 @@ function animate() {
     }
 
     player.switchSprite('takeDamage')
-    const playerHealthBarWidth = parseInt(playerHealthBar.style.width) - 10
+    const playerHealthBarWidth = parseInt(playerHealthBar.style.width) - 10 // Kenji's damage
     playerHealthBar.style.width = playerHealthBarWidth + '%'
   }
 
