@@ -10,7 +10,7 @@
       box-sizing: border-box;
     }
     body {
-      font-family: "MedievalSharp", cursive;
+      font-family: 'MedievalSharp', cursive;
     }
   </style>
   <link rel="stylesheet" href="index.css" />
@@ -41,19 +41,38 @@
           border-bottom: 4px solid rgb(50, 50, 50);
         "
       >
-        <div style="background: linear-gradient(to left, #FFFF00, #FFA500); height: 30px; width: 100%"></div>
+        <div
+          style="
+            background: linear-gradient(to left, #ffff00, #ffa500);
+            height: 30px;
+            width: 100%;
+          "
+        ></div>
         <div
           id="playerHealthBar"
           style="
             position: absolute;
-            background: linear-gradient(to left, #000080, #1E90FF);
+            background: linear-gradient(to left, #000080, #1e90ff);
             top: 0;
             right: 0;
             bottom: 0;
             width: 100%;
           "
         ></div>
-        <p class='char-name' style="position: absolute; left: 20; top: 40; color: white; font-size: x-large; font-weight: 600; display: none;">Samurai Mack</p>
+        <p
+          class="char-name"
+          style="
+            position: absolute;
+            left: 20;
+            top: 40;
+            color: white;
+            font-size: x-large;
+            font-weight: 600;
+            display: none;
+          "
+        >
+          Samurai Mack
+        </p>
       </div>
 
       <!-- Separator -->
@@ -86,12 +105,17 @@
           border-right: 4px solid rgb(50, 50, 50);
         "
       >
-        <div style="background: linear-gradient(to right, #FFFF00, #FFA500); height: 30px"></div>
+        <div
+          style="
+            background: linear-gradient(to right, #ffff00, #ffa500);
+            height: 30px;
+          "
+        ></div>
         <div
           id="enemyHealthBar"
           style="
             position: absolute;
-            background: linear-gradient(to right, #8B0000, #FF0000);
+            background: linear-gradient(to right, #8b0000, #ff0000);
             top: 0;
             right: 0;
             bottom: 0;
@@ -99,13 +123,35 @@
             width: 100%;
           "
         ></div>
-        <p  class='char-name' style="position: absolute; left: 380; top: 40; color: white; font-size: x-large; font-weight: 600; display: none;">Kenji</p>
+        <p
+          class="char-name"
+          style="
+            position: absolute;
+            left: 380;
+            top: 40;
+            color: white;
+            font-size: x-large;
+            font-weight: 600;
+            display: none;
+          "
+        >
+          Kenji
+        </p>
       </div>
     </div>
-    <div id='title' style="position: absolute; top: 40px; left: 28%; font-size: xx-large; display: flex;">
+    <div
+      id="title"
+      style="
+        position: absolute;
+        top: 40px;
+        left: 28%;
+        font-size: xx-large;
+        display: flex;
+      "
+    >
       <h1>Fighting Game</h1>
     </div>
-    <div style="position: absolute; top: 40%; left: 45%;">
+    <div style="position: absolute; top: 40%; left: 45%">
       <button id="start">START</button>
     </div>
     <div id="sound">
@@ -116,6 +162,9 @@
           <source src="sounds/videoplayback.mp3" type="audio/mpeg" />
         </audio>
       </label>
+    </div>
+    <div style="position: absolute; top: 60%; left: 43%">
+      <button id="menu-btn">How to Play</button>
     </div>
     <div
       id="display-result"
@@ -138,24 +187,75 @@
       TIE
     </div>
     <div
-    id="reset-btn"
-      style="
-        position: absolute;
-        top: 60%;
-        left: 43.7%;
-        display: none;
-      "
+      id="reset-btn"
+      style="position: absolute; top: 60%; left: 43.7%; display: none"
     >
       <button id="reset">PLAY AGAIN</button>
     </div>
     <audio id="cut-sound" muted="true">
-      <source src="sounds/cutsound (mp3cut.net).mp3" type="audio/mpeg">
+      <source src="sounds/cutsound (mp3cut.net).mp3" type="audio/mpeg" />
     </audio>
     <audio id="cut-sound-enemy" muted="true">
-      <source src="sounds/swordeffects (mp3cut.net).mp3" type="audio/mpeg">
-    </audio> 
+      <source src="sounds/swordeffects (mp3cut.net).mp3" type="audio/mpeg" />
+    </audio>
     <canvas></canvas>
   </div>
+
+    <div
+      id="display-menu"
+      style="
+        border: 1px solid black;
+        height: 430px;
+        width: 500px;
+        text-align: center;
+        border-radius: 0.7rem;
+        background-image: linear-gradient(#6b4e3d, #b78f61);
+        border: 2px solid rgb(50, 50, 50);
+        border-bottom: 5px solid rgb(50, 50, 50);
+        display: block;
+        position: absolute;
+        top: 40px;
+        left: 13%;
+        display: none;
+      "
+    >
+      <h1 style="margin-top: 30px">How to Play</h1>
+
+      <div
+        id="controls"
+        style="display: flex; justify-content: space-around; margin-top: 40px"
+      >
+        <div id="samurai-controls" class="list">
+          <h3 class="title-h3">As Samurai Mack:</h3>
+          <li><span class="keys">W</span> - Jump</li>
+          <li><span class="keys">A</span> - Move left</li>
+          <li><span class="keys">D</span> - Move right</li>
+          <li><span class="keys">Space</span> - Attack!</li>
+          <div class="info">
+            <p>
+              Samurai Mack is a little bit slower, but his attacks deal extra
+              damage!
+            </p>
+          </div>
+        </div>
+
+        <div id="kenji-controls" class="list">
+          <h3 class="title-h3">As Kenji:</h3>
+          <li><span class="keys">ArrowUp</span> - Jump</li>
+          <li><span class="keys">ArrowLeft</span> - Move left</li>
+          <li><span class="keys">ArrowRight</span> - Move right</li>
+          <li><span class="keys">ArrowDown</span> - Attack!</li>
+          <div class="info">
+            <p>
+              Kenji is quicker and attacks faster, but his attacks deal less
+              damage!
+            </p>
+          </div>
+        </div>
+      </div>
+      <button id="ok">OK!</button>
+    </div>
+    
 </body>
 
 <script src="src/helpers.js"></script>

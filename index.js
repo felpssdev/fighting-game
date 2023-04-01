@@ -212,10 +212,10 @@ function animate() {
 
   // Enemy movement
   if (keys.ArrowLeft.pressed && enemy.lastPressedKey === 'ArrowLeft') {
-    enemy.velocity.x = -3
+    enemy.velocity.x = -4
     enemy.switchSprite('run')
   } else if (keys.ArrowRight.pressed && enemy.lastPressedKey === 'ArrowRight') {
-    enemy.velocity.x = 3
+    enemy.velocity.x = 4
     enemy.switchSprite('run')
   } else {
     enemy.switchSprite('idle')
@@ -360,9 +360,11 @@ window.addEventListener('keyup', (event) => {
 
 const switchBtn = document.querySelector('#switch-sound')
 const audio = document.querySelector('#music-theme')
+const menuBtn = document.querySelector('#menu-btn')
 
 // Initiate animations
 startButton.addEventListener('click', () => {
+  menuBtn.style.display = 'none'
   animate()
   decreaseTimer()
 })
@@ -403,5 +405,20 @@ window.onload = () => {
   const resetBtn = document.querySelector('#reset-btn')
   resetBtn.addEventListener('click', () => {
     window.location.reload()
+  })
+
+  // Display menu
+  menuBtn.addEventListener('click', () => {
+    const menu = document.querySelector('#display-menu')
+    startButton.style.display = 'none'
+    menu.style.display = 'block'
+    document.querySelector('#title').style.display = 'none'
+
+    const okBtn = document.querySelector('#ok')
+    okBtn.addEventListener('click', () => {
+      startButton.style.display = 'block'
+      menu.style.display = 'none'
+      document.querySelector('#title').style.display = 'inline'
+    })
   })
 }
