@@ -273,7 +273,7 @@ window.addEventListener('keydown', (event) => {
       enemy.velocity.y = -10
       break
     case 'ArrowDown':
-      enemy.attack()
+      enemy.attack(true)
       break
   }
 })
@@ -315,10 +315,16 @@ window.onload = () => {
 
   // Sound
   switchBtn.addEventListener('change', function () {
+    const cutSound = document.querySelector('#cut-sound')
+    const swordSound = document.querySelector('#cut-sound-enemy')
     if (this.checked) {
       audio.play()
+      swordSound.muted = false
+      cutSound.muted = false
     } else {
       audio.pause()
+      swordSound.muted = true
+      cutSound.muted = true
     }
   })
 

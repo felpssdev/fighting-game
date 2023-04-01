@@ -134,10 +134,23 @@ class Player extends Sprite {
   }
 
   // Atacking method
-  attack() {
+  attack(enemy) {
     this.switchSprite('attack1')
     this.isAttacking = true
-    
+
+    // Atacking sounds
+    const cutSound = document.querySelector('#cut-sound')
+
+    if (enemy) {
+        const swordSound = document.querySelector('#cut-sound-enemy')
+        if (!swordSound.muted) {
+            swordSound.play()
+        }
+    } else {
+        if (!cutSound.muted) {
+            cutSound.play()
+        }
+    }
   }
 
   // Sprite options
