@@ -30,10 +30,6 @@ const player = new Player({
     y: 0,
   },
   bodyColor: 'blue',
-  offSet: {
-    x: 0,
-    y: 0,
-  },
   imageSrc: './img/samuraiMack/Idle.png',
   totalFrames: 8,
   scale: 2.2,
@@ -92,10 +88,6 @@ const enemy = new Player({
     y: 0,
   },
   bodyColor: 'red',
-  offSet: {
-    x: -50,
-    y: 0,
-  },
   imageSrc: './img/kenji/Idle.png',
   totalFrames: 4,
   scale: 2.2,
