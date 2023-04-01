@@ -16,7 +16,7 @@ class Sprite {
     this.totalFrames = totalFrames
     this.currentFrame = 0
     this.framesElapsed = 0
-    this.frameHold = 7 // Animation speed
+    this.frameHold = 5 // Animation speed
     this.offSet = offSet
   }
 

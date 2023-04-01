@@ -150,8 +150,18 @@ const startButton = document.querySelector('#start')
 
 // Animation loop and game start
 function animate() {
-  // Remove button at start of the game
+  // Remove pre-game content at the start of the game
   startButton.style.display = 'none'
+
+  document.querySelector('#title').style.display = 'none'
+
+  // Display game elements at the start of the game
+  const names = document.querySelectorAll('.char-name')
+  names.forEach(name => {
+    name.style.display = 'inline'
+  })
+
+  document.querySelector('#health-bars').style.display = 'flex'
 
   // Animation loop that keep everything running
   window.requestAnimationFrame(animate)

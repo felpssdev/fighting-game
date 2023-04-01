@@ -20,9 +20,10 @@
   <div style="display: inline-block; position: relative">
     <!-- Health bars div -->
     <div
+      id="health-bars"
       style="
         position: absolute;
-        display: flex;
+        display: none;
         width: 100%;
         align-items: center;
         padding: 20px;
@@ -52,7 +53,7 @@
             width: 100%;
           "
         ></div>
-        <p style="position: absolute; left: 20; top: 40; color: white; font-size: x-large; font-weight: 600;">Samurai Mack</p>
+        <p class='char-name' style="position: absolute; left: 20; top: 40; color: white; font-size: x-large; font-weight: 600; display: none;">Samurai Mack</p>
       </div>
 
       <!-- Separator -->
@@ -98,8 +99,11 @@
             width: 100%;
           "
         ></div>
-        <p style="position: absolute; left: 380; top: 40; color: white; font-size: x-large; font-weight: 600;">Kenji</p>
+        <p  class='char-name' style="position: absolute; left: 380; top: 40; color: white; font-size: x-large; font-weight: 600; display: none;">Kenji</p>
       </div>
+    </div>
+    <div id='title' style="position: absolute; top: 40px; left: 28%; font-size: xx-large; display: flex;">
+      <h1>Fighting Game</h1>
     </div>
     <div style="position: absolute; top: 40%; left: 45%;">
       <button id="start">START</button>
