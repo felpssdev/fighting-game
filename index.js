@@ -77,10 +77,10 @@ function animate() {
 
   // Player movement
   if (keys.a.pressed && player.lastPressedKey === 'a') {
-    player.velocity.x = -3
+    player.velocity.x = -player.speed
     player.switchSprite('run')
   } else if (keys.d.pressed && player.lastPressedKey === 'd') {
-    player.velocity.x = 3
+    player.velocity.x = player.speed
     player.switchSprite('run')
   } else {
     player.switchSprite('idle')
@@ -95,10 +95,10 @@ function animate() {
 
   // Enemy movement
   if (keys.ArrowLeft.pressed && enemy.lastPressedKey === 'ArrowLeft') {
-    enemy.velocity.x = -4
+    enemy.velocity.x = -enemy.speed
     enemy.switchSprite('run')
   } else if (keys.ArrowRight.pressed && enemy.lastPressedKey === 'ArrowRight') {
-    enemy.velocity.x = 4
+    enemy.velocity.x = enemy.speed
     enemy.switchSprite('run')
   } else {
     enemy.switchSprite('idle')
@@ -133,7 +133,7 @@ function animate() {
       enemy.switchSprite('death')
     } else {
       const enemyHealthBarWidth =
-        parseInt(enemyHealthBar.style.width) - player.damage // Player damage
+        parseInt(enemyHealthBar.style.width) - player.damage // Player 1 damage
       enemyHealthBar.style.width = enemyHealthBarWidth + '%'
     }
   }
@@ -167,7 +167,7 @@ function animate() {
       player.switchSprite('death')
     } else {
       const playerHealthBarWidth =
-        parseInt(playerHealthBar.style.width) - enemy.damage // Player damage
+        parseInt(playerHealthBar.style.width) - enemy.damage // Player 2 damage
       playerHealthBar.style.width = playerHealthBarWidth + '%'
     }
   }

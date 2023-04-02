@@ -53,7 +53,8 @@ const arthur = {
         height: 50,
       },
       damage: 13,
-      name: 'Sir Arthur'
+      name: 'Sir Arthur',
+      speed: 3.3
 }
 
 const samuraiMack = {
@@ -65,7 +66,6 @@ const samuraiMack = {
       x: 0,
       y: 0,
     },
-    bodyColor: 'blue',
     imageSrc: './img/samuraiMack/Idle.png',
     totalFrames: 8,
     scale: 2.2,
@@ -112,7 +112,8 @@ const samuraiMack = {
       height: 50,
     },
     damage: 15,
-    name: 'Samurai Mack'
+    name: 'Samurai Mack',
+    speed: 3
   }
 
   const kenji = {
@@ -124,7 +125,6 @@ const samuraiMack = {
       x: 0,
       y: 0,
     },
-    bodyColor: 'red',
     imageSrc: './img/kenji/Idle.png',
     totalFrames: 4,
     scale: 2.2,
@@ -171,6 +171,7 @@ const samuraiMack = {
       height: 50,
     },
     damage: 10,
-    name: 'Kenji'
+    name: 'Kenji',
+    speed: 4
   }
   
