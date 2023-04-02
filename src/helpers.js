@@ -33,10 +33,12 @@ function winner(moment) {
   } else if (
     parseInt(playerHealthBar.style.width) > parseInt(enemyHealthBar.style.width)
   ) {
+    enemy.switchSprite('death')
     document.querySelector('#display-result').innerHTML = `${player.name} Wins`
   } else if (
     parseInt(playerHealthBar.style.width) < parseInt(enemyHealthBar.style.width)
   ) {
+    player.switchSprite('death')
     document.querySelector('#display-result').innerHTML = `${enemy.name} Wins`
   }
 }

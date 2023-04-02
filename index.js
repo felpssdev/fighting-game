@@ -50,7 +50,6 @@ const startButton = document.querySelector('#start')
 function animate() {
   // Remove pre-game content at the start of the game
   startButton.style.display = 'none'
-
   document.querySelector('#title').style.display = 'none'
 
   // Display game elements at the start of the game
