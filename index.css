@@ -101,3 +101,43 @@ li {
   margin-top: 15px;
 }
 
+#select-player {
+  border: 1px solid black;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  margin: 20px 0 0 20px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.7rem;
+  background-image: linear-gradient(#6b4e3d, #b78f61);
+  border: 2px solid rgb(50, 50, 50);
+  border-bottom: 5px solid rgb(50, 50, 50);
+  position: absolute;
+  top: 20px;
+  left: 2%;
+}
+
+#select-player div {
+  margin-top: 7px;
+}
+
+#select-player p {
+  list-style: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px 5px 20px 5px;
+  margin: 5px 8px 5px 8px;
+  border: 2px solid rgb(50, 50, 50);
+  border-bottom: 5px solid rgb(50, 50, 50);
+  border-radius: 0.7rem;
+}
+
+#select-player p:hover {
+  color: #e81b1b;
+  cursor: pointer;
+}
+
+#char-button {
+  padding: 8px 8px;
+}

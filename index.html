@@ -163,8 +163,8 @@
         </audio>
       </label>
     </div>
-    <div style="position: absolute; top: 60%; left: 43%">
-      <button id="menu-btn">How to Play</button>
+    <div style="position: absolute; top: 60%; left: 45%">
+      <button id="menu-btn">MENU</button>
     </div>
     <div
       id="display-result"
@@ -201,63 +201,99 @@
     <canvas></canvas>
   </div>
 
+  <div
+    id="display-menu"
+    style="
+      height: 480px;
+      width: 500px;
+      text-align: center;
+      border-radius: 0.7rem;
+      background-image: linear-gradient(#6b4e3d, #b78f61);
+      border: 2px solid rgb(50, 50, 50);
+      border-bottom: 5px solid rgb(50, 50, 50);
+      display: block;
+      position: absolute;
+      top: 40px;
+      left: 22%;
+      display: none;
+    "
+  >
+    <h1 style="margin-top: 30px">How to Play</h1>
+
     <div
-      id="display-menu"
-      style="
-        border: 1px solid black;
-        height: 430px;
-        width: 500px;
-        text-align: center;
-        border-radius: 0.7rem;
-        background-image: linear-gradient(#6b4e3d, #b78f61);
-        border: 2px solid rgb(50, 50, 50);
-        border-bottom: 5px solid rgb(50, 50, 50);
-        display: block;
-        position: absolute;
-        top: 40px;
-        left: 13%;
-        display: none;
-      "
+      id="controls"
+      style="display: flex; justify-content: space-around; margin-top: 40px"
     >
-      <h1 style="margin-top: 30px">How to Play</h1>
-
-      <div
-        id="controls"
-        style="display: flex; justify-content: space-around; margin-top: 40px"
-      >
-        <div id="samurai-controls" class="list">
-          <h3 class="title-h3">As Samurai Mack:</h3>
-          <li><span class="keys">W</span> - Jump</li>
-          <li><span class="keys">A</span> - Move left</li>
-          <li><span class="keys">D</span> - Move right</li>
-          <li><span class="keys">Space</span> - Attack!</li>
-          <div class="info">
-            <p>
-              Samurai Mack is a little bit slower, but his attacks deal extra
-              damage!
-            </p>
-          </div>
-        </div>
-
-        <div id="kenji-controls" class="list">
-          <h3 class="title-h3">As Kenji:</h3>
-          <li><span class="keys">ArrowUp</span> - Jump</li>
-          <li><span class="keys">ArrowLeft</span> - Move left</li>
-          <li><span class="keys">ArrowRight</span> - Move right</li>
-          <li><span class="keys">ArrowDown</span> - Attack!</li>
-          <div class="info">
-            <p>
-              Kenji is quicker and attacks faster, but his attacks deal less
-              damage!
-            </p>
-          </div>
+      <div id="samurai-controls" class="list">
+        <h3 class="title-h3">As Player 1:</h3>
+        <li><span class="keys">W</span> - Jump</li>
+        <li><span class="keys">A</span> - Move left</li>
+        <li><span class="keys">D</span> - Move right</li>
+        <li><span class="keys">Space</span> - Attack!</li>
+        <div class="info">
+          <p>
+            Samurai Mack is a little bit slower, but his attacks deal extra
+            damage!
+          </p>
+          <br>
+          <p>
+            Sir Arthur has good attack speed and damage, but his attack range is low!
+          </p>
         </div>
       </div>
-      <button id="ok">OK!</button>
+
+      <div id="kenji-controls" class="list">
+        <h3 class="title-h3">As Player 2:</h3>
+        <li><span class="keys">ArrowUp</span> - Jump</li>
+        <li><span class="keys">ArrowLeft</span> - Move left</li>
+        <li><span class="keys">ArrowRight</span> - Move right</li>
+        <li><span class="keys">ArrowDown</span> - Attack!</li>
+        <div class="info">
+          <p>
+            Kenji is quicker and attacks faster, but his attacks deal less
+            damage!
+          </p>
+        </div>
+      </div>
     </div>
-    
+    <button id="ok">OK!</button>
+  </div>
+
+  <div
+    id="select-player"
+  >
+    <h1 style="margin-top: 10px;">Characters</h1>
+    <div
+      id="players"
+      style="
+        width: 80%;
+        height: 70%;
+        text-align: center;
+        display: flex;
+        justify-content: space-around;
+      "
+    >
+      <div
+        id="enemies-options"
+        style="width: 50%; height: 70%;"
+      >
+        <h2>Select Player 1</h2>
+        <p class="player-name">Samurai Mack</p>
+        <p class="player-name">Sir Arthur</p>
+      </div>
+      <div
+        id="players-options"
+        style="width: 50%; height: 70%"
+      >
+        <h2>Select Player 2</h2>
+        <p class="player-name">Kenji</p>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 <script src="src/helpers.js"></script>
 <script src="src/classes.js"></script>
+<script src="newCharacter.js"></script>
 <script src="index.js"></script>

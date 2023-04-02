@@ -33,11 +33,11 @@ function winner(moment) {
   } else if (
     parseInt(playerHealthBar.style.width) > parseInt(enemyHealthBar.style.width)
   ) {
-    document.querySelector('#display-result').innerHTML = 'Samurai Mack Wins!'
+    document.querySelector('#display-result').innerHTML = `${player.name} Wins`
   } else if (
     parseInt(playerHealthBar.style.width) < parseInt(enemyHealthBar.style.width)
   ) {
-    document.querySelector('#display-result').innerHTML = 'Kenji Wins!'
+    document.querySelector('#display-result').innerHTML = `${enemy.name} Wins`
   }
 }
 
@@ -50,4 +50,10 @@ function detectCollision({ rec1, rec2 }) {
       rec2.position.y &&
     rec1.attackHitBox.position.y <= rec2.position.y + rec2.height
   )
+}
+
+// Create players
+function createPlayer(player) {
+  const newPlayer = new Player(player)
+  return newPlayer
 }

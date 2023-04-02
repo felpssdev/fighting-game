@@ -68,7 +68,9 @@ class Player extends Sprite {
     sprites,
     attackBox = {
         offSet: {}, width: undefined, height: undefined
-    }
+    },
+    damage,
+    name
   }) {
     // Inherit Sprite's properties
     super({
@@ -102,6 +104,8 @@ class Player extends Sprite {
     this.sprites = sprites
     this.dead = false
     this.maxJumps = 0
+    this.damage = damage
+    this.name = name
 
     // Create image for each sprite
     for (const sprite in this.sprites) {

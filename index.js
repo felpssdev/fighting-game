@@ -20,120 +20,10 @@ const background = new Sprite({
 })
 
 // Create player
-const player = new Player({
-  position: {
-    x: 300,
-    y: 100,
-  },
-  velocity: {
-    x: 0,
-    y: 0,
-  },
-  bodyColor: 'blue',
-  imageSrc: './img/samuraiMack/Idle.png',
-  totalFrames: 8,
-  scale: 2.2,
-  offSet: {
-    x: 215,
-    y: 118,
-  },
-  sprites: {
-    idle: {
-      imageSrc: './img/samuraiMack/Idle.png',
-      totalFrames: 8,
-    },
-    run: {
-      imageSrc: './img/samuraiMack/Run.png',
-      totalFrames: 8,
-    },
-    jump: {
-      imageSrc: './img/samuraiMack/Jump.png',
-      totalFrames: 2,
-    },
-    fall: {
-      imageSrc: './img/samuraiMack/Fall.png',
-      totalFrames: 2,
-    },
-    attack1: {
-      imageSrc: './img/samuraiMack/Attack1.png',
-      totalFrames: 6,
-    },
-    takeDamage: {
-      imageSrc: './img/samuraiMack/Take Hit.png',
-      totalFrames: 4,
-    },
-    death: {
-      imageSrc: './img/samuraiMack/Death.png',
-      totalFrames: 6,
-    },
-  },
-  attackBox: {
-    offSet: {
-      x: 90,
-      y: 50,
-    },
-    width: 120,
-    height: 50,
-  },
-})
+let player = new Player(samuraiMack)
 
 // Create enemy
-const enemy = new Player({
-  position: {
-    x: 700,
-    y: 100,
-  },
-  velocity: {
-    x: 0,
-    y: 0,
-  },
-  bodyColor: 'red',
-  imageSrc: './img/kenji/Idle.png',
-  totalFrames: 4,
-  scale: 2.2,
-  offSet: {
-    x: 215,
-    y: 130,
-  },
-  sprites: {
-    idle: {
-      imageSrc: './img/kenji/Idle.png',
-      totalFrames: 4,
-    },
-    run: {
-      imageSrc: './img/kenji/Run.png',
-      totalFrames: 8,
-    },
-    jump: {
-      imageSrc: './img/kenji/Jump.png',
-      totalFrames: 2,
-    },
-    fall: {
-      imageSrc: './img/kenji/Fall.png',
-      totalFrames: 2,
-    },
-    attack1: {
-      imageSrc: './img/kenji/Attack1.png',
-      totalFrames: 4,
-    },
-    takeDamage: {
-      imageSrc: './img/kenji/Take hit.png',
-      totalFrames: 3,
-    },
-    death: {
-      imageSrc: './img/kenji/Death.png',
-      totalFrames: 7,
-    },
-  },
-  attackBox: {
-    offSet: {
-      x: -160,
-      y: 50,
-    },
-    width: 130,
-    height: 50,
-  },
-})
+let enemy = new Player(kenji)
 
 // All keys that I used to make movements
 const keys = {
@@ -166,6 +56,8 @@ function animate() {
   // Display game elements at the start of the game
   const names = document.querySelectorAll('.char-name')
   names.forEach((name) => {
+    names[0].innerHTML = player.name
+    names[1].innerHTML = enemy.name
     name.style.display = 'inline'
   })
 
@@ -225,27 +117,33 @@ function animate() {
   if (
     detectCollision({ rec1: player, rec2: enemy }) &&
     player.isAttacking &&
-    player.currentFrame === 4
+    player.currentFrame === player.sprites.attack1.totalFrames - 2
   ) {
     player.isAttacking = false
 
-    if (parseInt(enemyHealthBar.style.width) <= 13) {
+    if (parseInt(enemyHealthBar.style.width) <= player.damage) {
       enemy.switchSprite('death')
     }
 
     enemy.switchSprite('takeDamage')
-    if (parseInt(enemyHealthBar.style.width) < 15) {
-      const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 10
+    if (parseInt(enemyHealthBar.style.width) < player.damage) {
+      const enemyHealthBarWidth =
+        parseInt(enemyHealthBar.style.width) -
+        parseInt(enemyHealthBar.style.width)
       enemyHealthBar.style.width = enemyHealthBarWidth + '%'
       enemy.switchSprite('death')
     } else {
-      const enemyHealthBarWidth = parseInt(enemyHealthBar.style.width) - 15 // Samurai Mack's damage
+      const enemyHealthBarWidth =
+        parseInt(enemyHealthBar.style.width) - player.damage // Player damage
       enemyHealthBar.style.width = enemyHealthBarWidth + '%'
     }
   }
 
   // Player miss attack
-  if (player.isAttacking && player.currentFrame === 4) {
+  if (
+    player.isAttacking &&
+    player.currentFrame === player.sprites.attack1.totalFrames - 2
+  ) {
     player.isAttacking = false
   }
 
@@ -253,21 +151,33 @@ function animate() {
   if (
     detectCollision({ rec1: enemy, rec2: player }) &&
     enemy.isAttacking &&
-    enemy.currentFrame === 2
+    enemy.currentFrame === enemy.sprites.attack1.totalFrames - 2
   ) {
     enemy.isAttacking = false
 
-    if (parseInt(playerHealthBar.style.width) <= 10) {
+    if (parseInt(playerHealthBar.style.width) <= enemy.damage) {
       player.switchSprite('death')
     }
 
     player.switchSprite('takeDamage')
-    const playerHealthBarWidth = parseInt(playerHealthBar.style.width) - 10 // Kenji's damage
-    playerHealthBar.style.width = playerHealthBarWidth + '%'
+    if (parseInt(playerHealthBar.style.width) < enemy.damage) {
+      const playerHealthBarWidth =
+        parseInt(playerHealthBar.style.width) -
+        parseInt(playerHealthBar.style.width)
+      playerHealthBar.style.width = playerHealthBarWidth + '%'
+      player.switchSprite('death')
+    } else {
+      const playerHealthBarWidth =
+        parseInt(playerHealthBar.style.width) - enemy.damage // Player damage
+      playerHealthBar.style.width = playerHealthBarWidth + '%'
+    }
   }
 
   // Enemy miss attack
-  if (enemy.isAttacking && enemy.currentFrame === 2) {
+  if (
+    enemy.isAttacking &&
+    enemy.currentFrame === enemy.sprites.attack1.totalFrames - 2
+  ) {
     enemy.isAttacking = false
   }
 
@@ -402,15 +312,39 @@ window.onload = () => {
   // Display menu
   menuBtn.addEventListener('click', () => {
     const menu = document.querySelector('#display-menu')
+    document.querySelector('#select-player').style.display = 'flex'
     startButton.style.display = 'none'
     menu.style.display = 'block'
     document.querySelector('#title').style.display = 'none'
+
+    const playerNames = document.querySelectorAll('.player-name')
+    playerNames.forEach((playerName) => {
+      playerName.addEventListener('click', (event) => {
+        switch (event.target.innerHTML) {
+          case 'Samurai Mack':
+            startButton.style.display = 'block'
+            menu.style.display = 'none'
+            document.querySelector('#title').style.display = 'inline'
+            document.querySelector('#select-player').style.display = 'none'
+            player = createPlayer(samuraiMack)
+            break
+          case 'Sir Arthur':
+            startButton.style.display = 'block'
+            menu.style.display = 'none'
+            document.querySelector('#title').style.display = 'inline'
+            document.querySelector('#select-player').style.display = 'none'
+            player = createPlayer(arthur)
+            break
+        }
+      })
+    })
 
     const okBtn = document.querySelector('#ok')
     okBtn.addEventListener('click', () => {
       startButton.style.display = 'block'
       menu.style.display = 'none'
       document.querySelector('#title').style.display = 'inline'
+      document.querySelector('#select-player').style.display = 'none'
     })
   })
 }
