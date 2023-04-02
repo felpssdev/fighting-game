@@ -10,6 +10,7 @@
       box-sizing: border-box;
     }
     body {
+      color: #251613;
       font-family: 'MedievalSharp', cursive;
     }
   </style>
@@ -63,7 +64,7 @@
           class="char-name"
           style="
             position: absolute;
-            left: 20;
+            left: 30;
             top: 40;
             color: white;
             font-size: x-large;
@@ -86,7 +87,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          color: rgb(50, 50, 50);
+          color: #251613;
           font-size: xx-large;
           font-weight: 700;
           border: 4px solid rgb(50, 50, 50);
@@ -94,6 +95,18 @@
       >
         60
       </div>
+      <button
+        id="stop"
+        style="
+          position: absolute;
+          padding: 5px;
+          top: 83px;
+          left: 500px;
+          border-radius: 5px;
+        "
+      >
+        ↻
+      </button>
 
       <!-- Enemy health bar -->
       <div
@@ -127,7 +140,7 @@
           class="char-name"
           style="
             position: absolute;
-            left: 380;
+            left: 360;
             top: 40;
             color: white;
             font-size: x-large;
@@ -147,25 +160,22 @@
         left: 28%;
         font-size: xx-large;
         display: flex;
+        text-shadow: 1px 1px 2px #f2c46d;
       "
     >
       <h1>Fighting Game</h1>
     </div>
-    <div style="position: absolute; top: 40%; left: 45%">
-      <button id="start">START</button>
-    </div>
+
     <div id="sound">
       <label class="switch"
-        ><span>🔊</span>
+        ><span class="slider">🔊</span>
         <input id="switch-sound" type="checkbox" />
         <audio id="music-theme">
           <source src="sounds/videoplayback.mp3" type="audio/mpeg" />
         </audio>
       </label>
     </div>
-    <div style="position: absolute; top: 60%; left: 45%">
-      <button id="menu-btn">MENU</button>
-    </div>
+
     <div
       id="display-result"
       style="
@@ -208,17 +218,22 @@
       width: 500px;
       text-align: center;
       border-radius: 0.7rem;
-      background-image: linear-gradient(#6b4e3d, #b78f61);
+      background-image: linear-gradient(
+        hsla(32, 37%, 55%, 0.753),
+        hsla(22, 27%, 33%, 0.801)
+      );
       border: 2px solid rgb(50, 50, 50);
+      box-shadow: 0px 0px 10px rgb(50, 50, 50);
       border-bottom: 5px solid rgb(50, 50, 50);
-      display: block;
       position: absolute;
       top: 40px;
-      left: 450px;
+      left: 250px;
       display: none;
     "
   >
-    <h1 style="margin-top: 30px">How to Play</h1>
+    <h1 style="margin-top: 30px; text-shadow: 1px 1px 2px #f2c46d">
+      How to Play
+    </h1>
 
     <div
       id="controls"
@@ -235,9 +250,10 @@
             Samurai Mack is a little bit slower, but his attacks deal extra
             damage!
           </p>
-          <br>
+          <br />
           <p>
-            Sir Arthur has good attack speed and damage, but his attack range is low!
+            Sir Arthur has good attack speed and damage, but his attack range is
+            low!
           </p>
         </div>
       </div>
@@ -253,16 +269,21 @@
             Kenji is quicker and attacks faster, but his attacks deal less
             damage!
           </p>
+          <br />
+          <p>
+            Oriel Warwicke deal tons of damage, but her attack's range and speed
+            are low!
+          </p>
         </div>
       </div>
     </div>
     <button id="ok">OK!</button>
   </div>
 
-  <div
-    id="select-player"
-  >
-    <h1 style="margin-top: 10px;">Characters</h1>
+  <div id="select-player">
+    <h1 style="margin-top: 10px; text-shadow: 1px 1px 2px #f2c46d">
+      Characters
+    </h1>
     <div
       id="players"
       style="
@@ -273,24 +294,53 @@
         justify-content: space-around;
       "
     >
-      <div
-        id="enemies-options"
-        style="width: 50%; height: 70%;"
-      >
-        <h2>Select Player 1</h2>
+      <div id="enemies-options" class="options" style="width: 50%; height: 70%">
+        <h2 style="text-shadow: 1px 1px 2px #f2c46d">Select Player 1</h2>
         <p class="player-name">Samurai Mack</p>
         <p class="player-name">Sir Arthur</p>
       </div>
-      <div
-        id="players-options"
-        style="width: 50%; height: 70%"
-      >
-        <h2>Select Player 2</h2>
+      <div id="players-options" class="options" style="width: 50%; height: 70%">
+        <h2 style="text-shadow: 1px 1px 2px #f2c46d">Select Player 2</h2>
         <p class="player-name">Kenji</p>
+        <p class="player-name">Oriel Warwicke</p>
       </div>
     </div>
   </div>
 
+  <div
+    id="main-menu"
+    style="
+      position: absolute;
+      width: 300px;
+      height: 340px;
+      text-align: center;
+      top: 120px;
+      left: 330px;
+    "
+  >
+    <div
+      style="
+        height: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+      "
+    >
+      <div>
+        <button id="select-btn" style="width: 200px; margin-bottom: 20px">
+          Select your Fighter
+        </button>
+      </div>
+      <div>
+        <button id="menu-btn" style="width: 200px; margin-bottom: 20px">
+          How to Play
+        </button>
+      </div>
+    </div>
+    <button id="start" style="margin-top: 28px">FIGHT!</button>
+  </div>
 </body>
 
 <script src="src/helpers.js"></script>

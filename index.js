@@ -261,11 +261,11 @@ window.addEventListener('keyup', (event) => {
 
 const switchBtn = document.querySelector('#switch-sound')
 const audio = document.querySelector('#music-theme')
-const menuBtn = document.querySelector('#menu-btn')
+const menu = document.querySelector('#display-menu')
 
 // Initiate animations
 startButton.addEventListener('click', () => {
-  menuBtn.style.display = 'none'
+  mainMenu.style.display = 'none'
   animate()
   decreaseTimer()
 })
@@ -307,43 +307,71 @@ window.onload = () => {
   resetBtn.addEventListener('click', () => {
     window.location.reload()
   })
-
-  // Display menu
-  menuBtn.addEventListener('click', () => {
-    const menu = document.querySelector('#display-menu')
-    document.querySelector('#select-player').style.display = 'flex'
-    startButton.style.display = 'none'
-    menu.style.display = 'block'
-    document.querySelector('#title').style.display = 'none'
-
-    const playerNames = document.querySelectorAll('.player-name')
-    playerNames.forEach((playerName) => {
-      playerName.addEventListener('click', (event) => {
-        switch (event.target.innerHTML) {
-          case 'Samurai Mack':
-            startButton.style.display = 'block'
-            menu.style.display = 'none'
-            document.querySelector('#title').style.display = 'inline'
-            document.querySelector('#select-player').style.display = 'none'
-            player = createPlayer(samuraiMack)
-            break
-          case 'Sir Arthur':
-            startButton.style.display = 'block'
-            menu.style.display = 'none'
-            document.querySelector('#title').style.display = 'inline'
-            document.querySelector('#select-player').style.display = 'none'
-            player = createPlayer(arthur)
-            break
-        }
-      })
-    })
-
-    const okBtn = document.querySelector('#ok')
-    okBtn.addEventListener('click', () => {
-      startButton.style.display = 'block'
-      menu.style.display = 'none'
-      document.querySelector('#title').style.display = 'inline'
-      document.querySelector('#select-player').style.display = 'none'
-    })
-  })
 }
+
+const howToPlayBtn = document.querySelector('#menu-btn')
+const menuHowToPlay = document.querySelector('#display-menu')
+const selectPlayerMenu = document.querySelector('#select-player')
+const mainMenu = document.querySelector('#main-menu')
+const selectBtn = document.querySelector('#select-btn')
+
+howToPlayBtn.addEventListener('click', () => {
+  mainMenu.style.display = 'none'
+  menuHowToPlay.style.display = 'block'
+  document.querySelector('#title').style.display = 'none'
+})
+
+const okBtn = document.querySelector('#ok')
+okBtn.addEventListener('click', () => {
+  mainMenu.style.display = 'block'
+  menuHowToPlay.style.display = 'none'
+  document.querySelector('#title').style.display = 'inline'
+  document.querySelector('#select-player').style.display = 'none'
+  startButton.style.display = 'inline'
+})
+
+selectBtn.addEventListener('click', () => {
+  mainMenu.style.display = 'none'
+  selectPlayerMenu.style.display = 'flex'
+})
+
+const playerNames = document.querySelectorAll('.player-name')
+playerNames.forEach((playerName) => {
+  playerName.addEventListener('click', (event) => {
+    switch (event.target.innerHTML) {
+      case 'Samurai Mack':
+        startButton.style.display = 'inline'
+        mainMenu.style.display = 'block'
+        document.querySelector('#title').style.display = 'inline'
+        document.querySelector('#select-player').style.display = 'none'
+        player = createPlayer(samuraiMack)
+        break
+      case 'Kenji':
+        startButton.style.display = 'inline'
+        mainMenu.style.display = 'block'
+        document.querySelector('#title').style.display = 'inline'
+        document.querySelector('#select-player').style.display = 'none'
+        enemy = createPlayer(kenji)
+        break
+      case 'Sir Arthur':
+        startButton.style.display = 'inline'
+        mainMenu.style.display = 'block'
+        document.querySelector('#title').style.display = 'inline'
+        document.querySelector('#select-player').style.display = 'none'
+        player = createPlayer(arthur)
+        break
+      case 'Oriel Warwicke':
+        startButton.style.display = 'inline'
+        mainMenu.style.display = 'block'
+        document.querySelector('#title').style.display = 'inline'
+        document.querySelector('#select-player').style.display = 'none'
+        enemy = createPlayer(oriel)
+        break
+    }
+  })
+})
+
+const ingameReset = document.querySelector('#stop')
+ingameReset.addEventListener('click', () => {
+  window.location.reload()
+})

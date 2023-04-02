@@ -130,6 +130,9 @@ class Player extends Sprite {
     // Attack hitboxes
     this.attackHitBox.position.x = this.position.x + this.attackHitBox.offSet.x
     this.attackHitBox.position.y = this.position.y + this.attackHitBox.offSet.y
+
+    // Draw attack hitbox
+    // c.fillRect(this.attackHitBox.position.x, this.attackHitBox.position.y, this.attackHitBox.width, this.attackHitBox.height)
     
     // Allow velocity
     this.position.x += this.velocity.x
