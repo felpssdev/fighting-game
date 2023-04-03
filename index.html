@@ -216,8 +216,8 @@
   <div
     id="display-menu"
     style="
-      height: 480px;
-      width: 500px;
+      height: 300px;
+      width: 400px;
       text-align: center;
       border-radius: 0.7rem;
       background-image: linear-gradient(
@@ -228,18 +228,18 @@
       box-shadow: 0px 0px 10px rgb(50, 50, 50);
       border-bottom: 5px solid rgb(50, 50, 50);
       position: absolute;
-      top: 40px;
-      left: 250px;
+      top: 120px;
+      left: 307px;
       display: none;
     "
   >
-    <h1 style="margin-top: 30px; text-shadow: 1px 1px 2px #f2c46d">
+    <h1 style="margin-top: 20px; text-shadow: 1px 1px 2px #f2c46d">
       How to Play
     </h1>
 
     <div
       id="controls"
-      style="display: flex; justify-content: space-around; margin-top: 40px"
+      style="display: flex; justify-content: space-around; margin-top: 20px"
     >
       <div id="samurai-controls" class="list">
         <h3 class="title-h3">As Player 1:</h3>
@@ -247,15 +247,6 @@
         <li><span class="keys">A</span> - Move left</li>
         <li><span class="keys">D</span> - Move right</li>
         <li><span class="keys">Space</span> - Attack!</li>
-        <div class="info">
-          <p>
-            Samurai Mack is a little bit slower, but his attack range and damage are high!
-          </p>
-          <br />
-          <p>
-            Sir Arthur has good attack speed and damage, but he's slower!
-          </p>
-        </div>
       </div>
 
       <div id="kenji-controls" class="list">
@@ -264,17 +255,6 @@
         <li><span class="keys">ArrowLeft</span> - Move left</li>
         <li><span class="keys">ArrowRight</span> - Move right</li>
         <li><span class="keys">ArrowDown</span> - Attack!</li>
-        <div class="info">
-          <p>
-            Kenji is quicker and attacks faster, but his attacks deal less
-            damage!
-          </p>
-          <br />
-          <p>
-            Oriel Warwicke deal tons of damage, but her attack's range and speed
-            are low!
-          </p>
-        </div>
       </div>
     </div>
     <button id="ok">OK!</button>
@@ -294,12 +274,20 @@
         justify-content: space-around;
       "
     >
-      <div id="players-options" class="options" style="width: 50%; height: 70%; display: block">
+      <div
+        id="players-options"
+        class="options"
+        style="width: 50%; height: 70%; display: block"
+      >
         <h2 style="text-shadow: 1px 1px 2px #f2c46d">Select Player 1</h2>
         <p class="player-name">Samurai Mack</p>
         <p class="player-name">Sir Arthur</p>
       </div>
-      <div id="enemies-options" class="options" style="width: 50%; height: 70%; display: none;">
+      <div
+        id="enemies-options"
+        class="options"
+        style="width: 50%; height: 70%; display: none"
+      >
         <h2 style="text-shadow: 1px 1px 2px #f2c46d">Select Player 2</h2>
         <p class="player-name">Kenji</p>
         <p class="player-name">Oriel Warwicke</p>
@@ -320,7 +308,7 @@
   >
     <div
       style="
-        height: 60%;
+        height: 70%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -329,17 +317,77 @@
       "
     >
       <div>
-        <button id="select-btn" style="width: 200px; margin-bottom: 20px">
+        <button id="select-btn" style="width: 200px; margin-bottom: 10px">
           Select your Fighter
         </button>
       </div>
       <div>
-        <button id="menu-btn" style="width: 200px; margin-bottom: 20px">
+        <button id="menu-btn" style="width: 200px; margin-bottom: 10px">
           How to Play
         </button>
       </div>
+      <div>
+        <button id="fighters-info-btn" style="width: 200px">Fighters Info</button>
+      </div>
     </div>
-    <button id="start" style="margin-top: 28px">FIGHT!</button>
+    <button id="start" style="margin-top: 10px">FIGHT!</button>
+  </div>
+
+  <div
+  id="fighters-info"
+    style="
+      border: 1px solid black;
+      width: 400px;
+      height: 490px;
+      padding: 20px;
+      display: none;
+      flex-direction: column;
+      border-radius: 0.7rem;
+      border: 2px solid rgb(50, 50, 50);
+      border-bottom: 5px solid rgb(50, 50, 50);
+      background-image: linear-gradient(
+        hsla(32, 37%, 55%, 0.753),
+        hsla(22, 27%, 33%, 0.801)
+      );
+      box-shadow: 0px 0px 10px rgb(50, 50, 50);
+      position: absolute;
+      top: 40px;
+      left: 310px;
+    "
+  >
+    <h1 style="align-self: center; text-shadow: 1px 1px 2px #f2c46d">
+      Fighters Info
+    </h1>
+    <div class="info list" style="padding: 20px 8px 20px 8px; margin-top: 15px; width: 350px;">
+      <p>
+        Samurai Mack is a little bit slower, but his attack range and damage are
+        high!
+      </p>
+      <br />
+      <p>Sir Arthur has good attack speed and damage, but he's slower!</p>
+      <br />
+      <p>Kenji attacks faster, but his attacks deal less damage!</p>
+      <br />
+      <p>
+        Oriel Warwicke deal tons of damage, but her attack's range and speed are
+        low!
+      </p>
+      <br />
+      <p>Gunvald is as strong as thunder, but he attacks and runs slower!</p>
+      <br />
+      <p>Ruairidh Doylei is the quickest, but has less damage!</p>
+    </div>
+    <button
+      id="ok-info-btn"
+      style="
+        padding: 5px 9px;
+        margin-top: 25px;
+        width: 50px;
+        align-self: center;
+      "
+    >
+      OK!
+    </button>
   </div>
 </body>
 

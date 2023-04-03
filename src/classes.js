@@ -195,6 +195,7 @@ class Player extends Sprite {
         return
       }
 
+    // Switch animation
     switch (sprite) {
       case 'idle':
         if (this.image !== this.sprites.idle.image) {

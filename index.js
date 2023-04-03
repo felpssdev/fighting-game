@@ -316,12 +316,14 @@ const selectPlayerMenu = document.querySelector('#select-player')
 const mainMenu = document.querySelector('#main-menu')
 const selectBtn = document.querySelector('#select-btn')
 
+// Menu How to Play button
 howToPlayBtn.addEventListener('click', () => {
   mainMenu.style.display = 'none'
   menuHowToPlay.style.display = 'block'
   document.querySelector('#title').style.display = 'none'
 })
 
+// How to Play 'ok' button
 const okBtn = document.querySelector('#ok')
 okBtn.addEventListener('click', () => {
   mainMenu.style.display = 'block'
@@ -334,6 +336,7 @@ okBtn.addEventListener('click', () => {
 const playerOptions = document.querySelector('#players-options')
 const enemyOptions = document.querySelector('#enemies-options')
 
+// Select fighter button
 selectBtn.addEventListener('click', () => {
   mainMenu.style.display = 'none'
   selectPlayerMenu.style.display = 'flex'
@@ -341,6 +344,7 @@ selectBtn.addEventListener('click', () => {
   enemyOptions.style.display = 'none'
 })
 
+// Select fighter 
 const playerNames = document.querySelectorAll('.player-name')
 playerNames.forEach((playerName) => {
   playerName.addEventListener('click', (event) => {
@@ -377,7 +381,23 @@ playerNames.forEach((playerName) => {
   })
 })
 
+// In-game reset button
 const ingameReset = document.querySelector('#stop')
 ingameReset.addEventListener('click', () => {
   window.location.reload()
+})
+
+// Fighters info menu
+const fightersInfoBtn = document.querySelector('#fighters-info-btn')
+fightersInfoBtn.addEventListener('click', () => {
+  mainMenu.style.display = 'none'
+  document.querySelector('#fighters-info').style.display = 'flex'
+  document.querySelector('#title').style.display = 'none'
+
+  const okFightersInfoBtn = document.querySelector('#ok-info-btn')
+  okFightersInfoBtn.addEventListener('click', () => {
+    mainMenu.style.display = 'block'
+    document.querySelector('#fighters-info').style.display = 'none'
+    document.querySelector('#title').style.display = 'inline'
+  })
 })
