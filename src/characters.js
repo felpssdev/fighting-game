@@ -172,7 +172,7 @@ const gunvald = {
     width: 170,
     height: 50,
   },
-  damage: 18,
+  damage: 22,
   name: 'Gunvald',
   speed: 2,
 }

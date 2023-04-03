@@ -320,7 +320,6 @@ const selectBtn = document.querySelector('#select-btn')
 howToPlayBtn.addEventListener('click', () => {
   mainMenu.style.display = 'none'
   menuHowToPlay.style.display = 'block'
-  document.querySelector('#title').style.display = 'none'
 })
 
 // How to Play 'ok' button
@@ -328,7 +327,6 @@ const okBtn = document.querySelector('#ok')
 okBtn.addEventListener('click', () => {
   mainMenu.style.display = 'block'
   menuHowToPlay.style.display = 'none'
-  document.querySelector('#title').style.display = 'inline'
   document.querySelector('#select-player').style.display = 'none'
   startButton.style.display = 'inline'
 })
@@ -344,7 +342,7 @@ selectBtn.addEventListener('click', () => {
   enemyOptions.style.display = 'none'
 })
 
-// Select fighter 
+// Select fighter
 const playerNames = document.querySelectorAll('.player-name')
 playerNames.forEach((playerName) => {
   playerName.addEventListener('click', (event) => {
