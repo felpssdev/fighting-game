@@ -113,9 +113,68 @@ const samuraiMack = {
     width: 120,
     height: 50,
   },
-  damage: 15,
+  damage: 14,
   name: 'Samurai Mack',
   speed: 3,
+}
+
+const gunvald = {
+  position: {
+    x: 300,
+    y: 100,
+  },
+  velocity: {
+    x: 0,
+    y: 0,
+  },
+  imageSrc: './img/Gunvald/Idle.png',
+  totalFrames: 10,
+  scale: 3.4,
+  offSet: {
+    x: 280,
+    y: 190,
+  },
+  sprites: {
+    idle: {
+      imageSrc: './img/Gunvald/Idle.png',
+      totalFrames: 10,
+    },
+    run: {
+      imageSrc: './img/Gunvald/Run.png',
+      totalFrames: 8,
+    },
+    jump: {
+      imageSrc: './img/Gunvald/Jump.png',
+      totalFrames: 3,
+    },
+    fall: {
+      imageSrc: './img/Gunvald/Fall.png',
+      totalFrames: 3,
+    },
+    attack1: {
+      imageSrc: './img/Gunvald/Attack3.png',
+      totalFrames: 8,
+    },
+    takeDamage: {
+      imageSrc: './img/Gunvald/Take hit.png',
+      totalFrames: 3,
+    },
+    death: {
+      imageSrc: './img/Gunvald/Death.png',
+      totalFrames: 7,
+    },
+  },
+  attackBox: {
+    offSet: {
+      x: 30,
+      y: 60,
+    },
+    width: 170,
+    height: 50,
+  },
+  damage: 18,
+  name: 'Gunvald',
+  speed: 2,
 }
 
 // Enemies
@@ -176,7 +235,7 @@ const kenji = {
   },
   damage: 8,
   name: 'Kenji',
-  speed: 4,
+  speed: 3.5,
 }
 
 const oriel = {
@@ -235,5 +294,64 @@ const oriel = {
   },
   damage: 17,
   name: 'Oriel Warwicke',
+  speed: 3
+}
+
+const ruairidh = {
+  position: {
+    x: 700,
+    y: 100,
+  },
+  velocity: {
+    x: 0,
+    y: 0,
+  },
+  imageSrc: './img/Ruairidh/Idle.png',
+  totalFrames: 10,
+  scale: 2.2,
+  offSet: {
+    x: 170,
+    y: 100,
+  },
+  sprites: {
+    idle: {
+      imageSrc: './img/Ruairidh/Idle.png',
+      totalFrames: 10,
+    },
+    run: {
+      imageSrc: './img/Ruairidh/Run.png',
+      totalFrames: 8,
+    },
+    jump: {
+      imageSrc: './img/Ruairidh/Going Up.png',
+      totalFrames: 3,
+    },
+    fall: {
+      imageSrc: './img/Ruairidh/Going Down.png',
+      totalFrames: 3,
+    },
+    attack1: {
+      imageSrc: './img/Ruairidh/Attack1.png',
+      totalFrames: 7,
+    },
+    takeDamage: {
+      imageSrc: './img/Ruairidh/Take Hit.png',
+      totalFrames: 3,
+    },
+    death: {
+      imageSrc: './img/Ruairidh/Death.png',
+      totalFrames: 11,
+    },
+  },
+  attackBox: {
+    offSet: {
+      x: -45,
+      y: 50,
+    },
+    width: 50,
+    height: 50,
+  },
+  damage: 17,
+  name: 'Ruairidh Doylei',
   speed: 3
 }

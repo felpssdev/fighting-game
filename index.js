@@ -377,6 +377,20 @@ playerNames.forEach((playerName) => {
         document.querySelector('#select-player').style.display = 'none'
         enemy = createPlayer(oriel)
         break
+      case 'Gunvald':
+        startButton.style.display = 'inline'
+        playerOptions.style.display = 'none'
+        enemyOptions.style.display = 'block'
+        document.querySelector('#title').style.display = 'inline'
+        player = createPlayer(gunvald)
+        break
+      case 'Ruairidh Doylei':
+        startButton.style.display = 'inline'
+        mainMenu.style.display = 'block'
+        document.querySelector('#title').style.display = 'inline'
+        document.querySelector('#select-player').style.display = 'none'
+        enemy = createPlayer(ruairidh)
+        break
     }
   })
 })
