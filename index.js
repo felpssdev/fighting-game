@@ -309,6 +309,7 @@ window.onload = () => {
   })
 }
 
+// Display main menu
 const howToPlayBtn = document.querySelector('#menu-btn')
 const menuHowToPlay = document.querySelector('#display-menu')
 const selectPlayerMenu = document.querySelector('#select-player')
@@ -330,9 +331,14 @@ okBtn.addEventListener('click', () => {
   startButton.style.display = 'inline'
 })
 
+const playerOptions = document.querySelector('#players-options')
+const enemyOptions = document.querySelector('#enemies-options')
+
 selectBtn.addEventListener('click', () => {
   mainMenu.style.display = 'none'
   selectPlayerMenu.style.display = 'flex'
+  playerOptions.style.display = 'block'
+  enemyOptions.style.display = 'none'
 })
 
 const playerNames = document.querySelectorAll('.player-name')
@@ -341,9 +347,9 @@ playerNames.forEach((playerName) => {
     switch (event.target.innerHTML) {
       case 'Samurai Mack':
         startButton.style.display = 'inline'
-        mainMenu.style.display = 'block'
+        playerOptions.style.display = 'none'
+        enemyOptions.style.display = 'block'
         document.querySelector('#title').style.display = 'inline'
-        document.querySelector('#select-player').style.display = 'none'
         player = createPlayer(samuraiMack)
         break
       case 'Kenji':
@@ -355,9 +361,9 @@ playerNames.forEach((playerName) => {
         break
       case 'Sir Arthur':
         startButton.style.display = 'inline'
-        mainMenu.style.display = 'block'
+        playerOptions.style.display = 'none'
+        enemyOptions.style.display = 'block'
         document.querySelector('#title').style.display = 'inline'
-        document.querySelector('#select-player').style.display = 'none'
         player = createPlayer(arthur)
         break
       case 'Oriel Warwicke':

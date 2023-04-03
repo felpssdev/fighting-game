@@ -48,15 +48,15 @@ const arthur = {
   },
   attackBox: {
     offSet: {
-      x: 60,
+      x: 65,
       y: 50,
     },
-    width: 120,
+    width: 100,
     height: 50,
   },
   damage: 13,
   name: 'Sir Arthur',
-  speed: 3.3,
+  speed: 2.6,
 }
 
 const samuraiMack = {
@@ -230,10 +230,10 @@ const oriel = {
       x: -45,
       y: 50,
     },
-    width: 0,
+    width: 50,
     height: 50,
   },
   damage: 17,
   name: 'Oriel Warwicke',
-  speed: 2.6
+  speed: 3
 }
