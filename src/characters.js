@@ -310,8 +310,8 @@ const ruairidh = {
   totalFrames: 10,
   scale: 2.2,
   offSet: {
-    x: 170,
-    y: 100,
+    x: 110,
+    y: 33,
   },
   sprites: {
     idle: {
@@ -345,10 +345,10 @@ const ruairidh = {
   },
   attackBox: {
     offSet: {
-      x: -45,
+      x: -75,
       y: 50,
     },
-    width: 50,
+    width: 120,
     height: 50,
   },
   damage: 17,
