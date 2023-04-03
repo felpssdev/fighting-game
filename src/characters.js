@@ -294,7 +294,7 @@ const oriel = {
   },
   damage: 17,
   name: 'Oriel Warwicke',
-  speed: 3
+  speed: 3.3
 }
 
 const ruairidh = {
@@ -351,7 +351,7 @@ const ruairidh = {
     width: 120,
     height: 50,
   },
-  damage: 17,
+  damage: 10,
   name: 'Ruairidh Doylei',
-  speed: 3
+  speed: 4.2
 }
