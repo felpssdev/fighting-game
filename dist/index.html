@@ -1,0 +1,401 @@
+<head>
+  <meta charset="utf-8">
+  <link
+    href="https://fonts.googleapis.com/css?family=MedievalSharp&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body {
+      color: #251613;
+      font-family: 'MedievalSharp', cursive;
+    }
+  </style>
+  
+  <link rel="stylesheet" href="/assets/index-3e45cad2.css">
+</head>
+<body>
+  <!-- Main div -->
+  <div style="display: inline-block; position: relative">
+    <!-- Health bars div -->
+    <div
+      id="health-bars"
+      style="
+        position: absolute;
+        display: none;
+        width: 100%;
+        align-items: center;
+        padding: 20px;
+      "
+    >
+      <!-- Player health bar -->
+      <div
+        style="
+          position: relative;
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          border-top: 4px solid rgb(50, 50, 50);
+          border-left: 4px solid rgb(50, 50, 50);
+          border-bottom: 4px solid rgb(50, 50, 50);
+        "
+      >
+        <div
+          style="
+            background: linear-gradient(to left, #ffff00, #ffa500);
+            height: 30px;
+            width: 100%;
+          "
+        ></div>
+        <div
+          id="playerHealthBar"
+          style="
+            position: absolute;
+            background: linear-gradient(to left, #000080, #1e90ff);
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+          "
+        ></div>
+        <p
+          class="char-name"
+          style="
+            position: absolute;
+            left: 30;
+            top: 40;
+            color: white;
+            font-size: x-large;
+            font-weight: 600;
+            display: none;
+          "
+        >
+          Samurai Mack
+        </p>
+      </div>
+
+      <!-- Separator -->
+      <div
+        id="timer"
+        style="
+          background-image: linear-gradient(#6b4e3d, #b78f61);
+          height: 60px;
+          width: 60px;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #251613;
+          font-size: xx-large;
+          font-weight: 700;
+          border: 4px solid rgb(50, 50, 50);
+        "
+      >
+        60
+      </div>
+      <button
+        id="stop"
+        style="
+          position: absolute;
+          padding: 5px;
+          top: 81px;
+          left: 495px;
+          border-radius: 0;
+          border: 4px solid rgb(50, 50, 50);
+          box-sizing: border-box;
+        "
+      >
+        ↻
+      </button>
+
+      <!-- Enemy health bar -->
+      <div
+        style="
+          position: relative;
+          width: 100%;
+          border-top: 4px solid rgb(50, 50, 50);
+          border-bottom: 4px solid rgb(50, 50, 50);
+          border-right: 4px solid rgb(50, 50, 50);
+        "
+      >
+        <div
+          style="
+            background: linear-gradient(to right, #ffff00, #ffa500);
+            height: 30px;
+          "
+        ></div>
+        <div
+          id="enemyHealthBar"
+          style="
+            position: absolute;
+            background: linear-gradient(to right, #8b0000, #ff0000);
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+          "
+        ></div>
+        <p
+          class="char-name"
+          style="
+            position: absolute;
+            left: 360;
+            top: 40;
+            color: white;
+            font-size: x-large;
+            font-weight: 600;
+            display: none;
+          "
+        >
+          Kenji
+        </p>
+      </div>
+    </div>
+    <div
+      id="title"
+      style="
+        position: absolute;
+        top: 40px;
+        left: 300px;
+        font-size: xx-large;
+        display: flex;
+        text-shadow: 1px 1px 2px #f2c46d;
+      "
+    >
+      <h1>Fighting Game</h1>
+    </div>
+
+    <div id="sound">
+      <label class="switch"
+        ><span class="slider">🔊</span>
+        <input id="switch-sound" type="checkbox" />
+        <audio id="music-theme">
+          <source src="/assets/videoplayback-6e39b584.mp3" type="audio/mpeg" />
+        </audio>
+      </label>
+    </div>
+
+    <div
+      id="display-result"
+      style="
+        position: absolute;
+        color: white;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        font-size: xx-large;
+        font-weight: 700;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+      "
+    >
+      TIE
+    </div>
+    <div
+      id="reset-btn"
+      style="position: absolute; top: 60%; left: 43.7%; display: none"
+    >
+      <button id="reset">PLAY AGAIN</button>
+    </div>
+    <audio id="cut-sound" muted="true">
+      <source src="/assets/cutsound (mp3cut.net)-6ffe0b9d.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="cut-sound-enemy" muted="true">
+      <source src="/assets/swordeffects (mp3cut.net)-8457d150.mp3" type="audio/mpeg" />
+    </audio>
+    <canvas></canvas>
+  </div>
+
+  <div
+    id="display-menu"
+    style="
+      height: 300px;
+      width: 400px;
+      text-align: center;
+      border-radius: 0.7rem;
+      background-image: linear-gradient(
+        hsla(32, 37%, 55%, 0.753),
+        hsla(22, 27%, 33%, 0.801)
+      );
+      border: 2px solid rgb(50, 50, 50);
+      box-shadow: 0px 0px 10px rgb(50, 50, 50);
+      border-bottom: 5px solid rgb(50, 50, 50);
+      position: absolute;
+      top: 120px;
+      left: 307px;
+      display: none;
+    "
+  >
+    <h1 style="margin-top: 20px; text-shadow: 1px 1px 2px #f2c46d">
+      How to Play
+    </h1>
+
+    <div
+      id="controls"
+      style="display: flex; justify-content: space-around; margin-top: 20px"
+    >
+      <div id="samurai-controls" class="list">
+        <h3 class="title-h3">As Player 1:</h3>
+        <li><span class="keys">W</span> - Jump</li>
+        <li><span class="keys">A</span> - Move left</li>
+        <li><span class="keys">D</span> - Move right</li>
+        <li><span class="keys">Space</span> - Attack!</li>
+      </div>
+
+      <div id="kenji-controls" class="list">
+        <h3 class="title-h3">As Player 2:</h3>
+        <li><span class="keys">ArrowUp</span> - Jump</li>
+        <li><span class="keys">ArrowLeft</span> - Move left</li>
+        <li><span class="keys">ArrowRight</span> - Move right</li>
+        <li><span class="keys">ArrowDown</span> - Attack!</li>
+      </div>
+    </div>
+    <button id="ok">OK!</button>
+  </div>
+
+  <div id="select-player">
+    <h1 style="margin-top: 10px; text-shadow: 1px 1px 2px #f2c46d">
+      Characters
+    </h1>
+    <div
+      id="players"
+      style="
+        width: 80%;
+        height: 70%;
+        text-align: center;
+        display: flex;
+        justify-content: space-around;
+      "
+    >
+      <div
+        id="players-options"
+        class="options"
+        style="width: 50%; height: 70%; display: block"
+      >
+        <h2 style="text-shadow: 1px 1px 2px #f2c46d">Select Player 1</h2>
+        <p class="player-name">Samurai Kaito</p>
+        <p class="player-name">Sir Arthur</p>
+        <p class="player-name">Gunvald</p>
+      </div>
+      <div
+        id="enemies-options"
+        class="options"
+        style="width: 50%; height: 70%; display: none"
+      >
+        <h2 style="text-shadow: 1px 1px 2px #f2c46d">Select Player 2</h2>
+        <p class="player-name">Kenji</p>
+        <p class="player-name">Oriel Warwicke</p>
+        <p class="player-name">Ruairidh Doylei</p>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="main-menu"
+    style="
+      position: absolute;
+      width: 300px;
+      height: 340px;
+      text-align: center;
+      top: 120px;
+      left: 360px;
+    "
+  >
+    <div
+      style="
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+      "
+    >
+      <div>
+        <button id="select-btn" style="width: 200px; margin-bottom: 10px">
+          Select your Fighter
+        </button>
+      </div>
+      <div>
+        <button id="menu-btn" style="width: 200px; margin-bottom: 10px">
+          How to Play
+        </button>
+      </div>
+      <div>
+        <button id="fighters-info-btn" style="width: 200px">Fighters Info</button>
+      </div>
+    </div>
+    <button id="start" style="margin-top: 10px">FIGHT!</button>
+  </div>
+
+  <div
+  id="fighters-info"
+    style="
+      border: 1px solid black;
+      width: 400px;
+      height: 490px;
+      padding: 20px;
+      display: none;
+      flex-direction: column;
+      border-radius: 0.7rem;
+      border: 2px solid rgb(50, 50, 50);
+      border-bottom: 5px solid rgb(50, 50, 50);
+      background-image: linear-gradient(
+        hsla(32, 37%, 55%, 0.753),
+        hsla(22, 27%, 33%, 0.801)
+      );
+      box-shadow: 0px 0px 10px rgb(50, 50, 50);
+      position: absolute;
+      top: 40px;
+      left: 310px;
+    "
+  >
+    <h1 style="align-self: center; text-shadow: 1px 1px 2px #f2c46d">
+      Fighters Info
+    </h1>
+    <div class="info list" style="padding: 20px 8px 20px 8px; margin-top: 15px; width: 350px;">
+      <p>
+        Samurai Kaito is a little bit slower, but his attack range and damage are
+        high!
+      </p>
+      <br />
+      <p>Sir Arthur has good attack speed and damage, but he's slower!</p>
+      <br />
+      <p>Kenji attacks faster, but his attacks deal less damage!</p>
+      <br />
+      <p>
+        Oriel Warwicke deal tons of damage, but her attack's range and speed are
+        low!
+      </p>
+      <br />
+      <p>Gunvald is as strong as thunder, but he attacks and runs slower!</p>
+      <br />
+      <p>Ruairidh Doylei is the quickest, but has less damage!</p>
+    </div>
+    <button
+      id="ok-info-btn"
+      style="
+        padding: 5px 9px;
+        margin-top: 25px;
+        width: 50px;
+        align-self: center;
+      "
+    >
+      OK!
+    </button>
+  </div>
+</body>
+
+<script src="src/helpers.js"></script>
+<script src="src/classes.js"></script>
+<script src="src/characters.js"></script>
+<script src="index.js"></script>
