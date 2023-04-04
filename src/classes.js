@@ -70,6 +70,7 @@ class Player extends Sprite {
       width: undefined,
       height: undefined,
     },
+    height,
     damage,
     name,
     speed,
@@ -84,7 +85,7 @@ class Player extends Sprite {
     })
 
     this.velocity = velocity
-    this.height = 150
+    this.height = height
     this.width = 50
     this.lastPressedKey
     this.bodyColor = bodyColor
@@ -133,15 +134,15 @@ class Player extends Sprite {
     this.attackHitBox.position.y = this.position.y + this.attackHitBox.offSet.y
 
     // Draw attack hitbox
-    // c.fillRect(
-    //  this.attackHitBox.position.x,
-    //  this.attackHitBox.position.y,
-    //  this.attackHitBox.width,
-    //  this.attackHitBox.height
-    // )
+    c.fillRect(
+     this.attackHitBox.position.x,
+     this.attackHitBox.position.y,
+     this.attackHitBox.width,
+     this.attackHitBox.height
+    )
 
     // Draw character hitbox
-    // c.fillRect(this.position.x, this.position.y, this.width, this.height)
+    c.fillRect(this.position.x, this.position.y, this.width, this.height)
 
     // Allow velocity
     this.position.x += this.velocity.x

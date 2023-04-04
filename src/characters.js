@@ -14,7 +14,7 @@ const arthur = {
   scale: 2.2,
   offSet: {
     x: 170,
-    y: 80,
+    y: 100,
   },
   sprites: {
     idle: {
@@ -48,12 +48,13 @@ const arthur = {
   },
   attackBox: {
     offSet: {
-      x: 65,
+      x: 58,
       y: 50,
     },
     width: 100,
     height: 50,
   },
+  height: 130,
   damage: 13,
   name: 'Sir Arthur',
   speed: 2.6,
@@ -73,7 +74,7 @@ const kaito = {
   scale: 2.2,
   offSet: {
     x: 200,
-    y: 118,
+    y: 148,
   },
   sprites: {
     idle: {
@@ -108,11 +109,12 @@ const kaito = {
   attackBox: {
     offSet: {
       x: 90,
-      y: 50,
+      y: 20,
     },
     width: 120,
     height: 50,
   },
+  height: 120,
   damage: 14,
   name: 'Samurai Kaito',
   speed: 3,
@@ -172,6 +174,7 @@ const gunvald = {
     width: 170,
     height: 50,
   },
+  height: 150,
   damage: 22,
   name: 'Gunvald',
   speed: 2,
@@ -193,7 +196,7 @@ const kenji = {
   scale: 2.2,
   offSet: {
     x: 200,
-    y: 130,
+    y: 160,
   },
   sprites: {
     idle: {
@@ -228,11 +231,12 @@ const kenji = {
   attackBox: {
     offSet: {
       x: -160,
-      y: 50,
+      y: 40,
     },
     width: 130,
     height: 50,
   },
+  height: 120,
   damage: 8,
   name: 'Kenji',
   speed: 3.5,
@@ -252,7 +256,7 @@ const oriel = {
   scale: 2.2,
   offSet: {
     x: 170,
-    y: 100,
+    y: 130,
   },
   sprites: {
     idle: {
@@ -286,12 +290,13 @@ const oriel = {
   },
   attackBox: {
     offSet: {
-      x: -45,
-      y: 50,
+      x: -55,
+      y: 25,
     },
-    width: 50,
+    width: 60,
     height: 50,
   },
+  height: 110,
   damage: 17,
   name: 'Oriel',
   speed: 3.3
@@ -311,7 +316,7 @@ const ruairidh = {
   scale: 2.2,
   offSet: {
     x: 110,
-    y: 33,
+    y: 72,
   },
   sprites: {
     idle: {
@@ -345,12 +350,13 @@ const ruairidh = {
   },
   attackBox: {
     offSet: {
-      x: -75,
+      x: -105,
       y: 50,
     },
-    width: 120,
+    width: 112,
     height: 50,
   },
+  height: 110,
   damage: 10,
   name: 'Ruairidh',
   speed: 4.2
