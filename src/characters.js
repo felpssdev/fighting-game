@@ -256,7 +256,7 @@
   scale: 2.2,
   offSet: {
     x: 170,
-    y: 130,
+    y: 140,
   },
   sprites: {
     idle: {
