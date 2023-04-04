@@ -98,7 +98,7 @@ class Player extends Sprite {
       width: attackBox.width,
       height: attackBox.height,
     }
-    this.isAttacking
+    this.isAttacking = false
     this.currentFrame = 0
     this.framesElapsed = 0
     this.frameHold = 12

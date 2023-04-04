@@ -209,7 +209,9 @@ window.addEventListener('keydown', (event) => {
         }
         break
       case ' ':
-        player.attack()
+        if (player.image != player.sprites.attack1.image) {
+          player.attack()
+        }
         break
     }
   }
@@ -231,7 +233,9 @@ window.addEventListener('keydown', (event) => {
         }
         break
       case 'ArrowDown':
-        enemy.attack(true)
+        if (enemy.image != enemy.sprites.attack1.image) {
+          enemy.attack(true)
+        }
         break
     }
   }
