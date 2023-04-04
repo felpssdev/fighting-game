@@ -351,7 +351,7 @@ const ruairidh = {
   attackBox: {
     offSet: {
       x: -105,
-      y: 50,
+      y: 30,
     },
     width: 112,
     height: 50,
