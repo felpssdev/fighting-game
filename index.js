@@ -76,10 +76,10 @@ function animate() {
   // the character would not listen to that event
 
   // Player movement
-  if (keys.a.pressed && player.lastPressedKey === 'a') {
+  if (keys.a.pressed && player.lastPressedKey === 'a' && !player.onEdgeMin) {
     player.velocity.x = -player.speed
     player.switchSprite('run')
-  } else if (keys.d.pressed && player.lastPressedKey === 'd') {
+  } else if (keys.d.pressed && player.lastPressedKey === 'd' && !player.onEdgeMax) {
     player.velocity.x = player.speed
     player.switchSprite('run')
   } else {
@@ -94,10 +94,10 @@ function animate() {
   }
 
   // Enemy movement
-  if (keys.ArrowLeft.pressed && enemy.lastPressedKey === 'ArrowLeft') {
+  if (keys.ArrowLeft.pressed && enemy.lastPressedKey === 'ArrowLeft' && !enemy.onEdgeMin) {
     enemy.velocity.x = -enemy.speed
     enemy.switchSprite('run')
-  } else if (keys.ArrowRight.pressed && enemy.lastPressedKey === 'ArrowRight') {
+  } else if (keys.ArrowRight.pressed && enemy.lastPressedKey === 'ArrowRight' && !enemy.onEdgeMax) {
     enemy.velocity.x = enemy.speed
     enemy.switchSprite('run')
   } else {

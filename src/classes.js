@@ -109,6 +109,8 @@ class Player extends Sprite {
     this.damage = damage
     this.name = name
     this.speed = speed
+    this.onEdgeMin = false
+    this.onEdgeMax = false
 
     // Create image for each sprite
     for (const sprite in this.sprites) {
@@ -153,6 +155,16 @@ class Player extends Sprite {
       this.maxJumps = 0
     } else {
       this.velocity.y += gForce
+    }
+
+    // Max width block
+    if (this.position.x <= 0) {
+      this.onEdgeMin = true
+    } else if (this.position.x + this.width + this.velocity.x > canvas.width) {
+      this.onEdgeMax = true
+    } else {
+      this.onEdgeMin = false
+      this.onEdgeMax = false
     }
   }
 
