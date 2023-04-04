@@ -59,7 +59,6 @@ class Player extends Sprite {
   constructor({
     position,
     velocity,
-    bodyColor,
     imageSrc,
     scale = 1,
     totalFrames = 1,
@@ -88,7 +87,6 @@ class Player extends Sprite {
     this.height = height
     this.width = 50
     this.lastPressedKey
-    this.bodyColor = bodyColor
 
     // Atack box!
     this.attackHitBox = {
