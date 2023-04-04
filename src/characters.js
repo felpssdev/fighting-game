@@ -1,6 +1,6 @@
 // Players
 
-const arthur = {
+ const arthur = {
   position: {
     x: 300,
     y: 100,
@@ -60,7 +60,7 @@ const arthur = {
   speed: 2.6,
 }
 
-const kaito = {
+ const kaito = {
   position: {
     x: 300,
     y: 100,
@@ -120,7 +120,7 @@ const kaito = {
   speed: 3,
 }
 
-const gunvald = {
+ const gunvald = {
   position: {
     x: 300,
     y: 100,
@@ -182,7 +182,7 @@ const gunvald = {
 
 // Enemies
 
-const kenji = {
+ const kenji = {
   position: {
     x: 700,
     y: 100,
@@ -242,7 +242,7 @@ const kenji = {
   speed: 3.5,
 }
 
-const oriel = {
+ const oriel = {
   position: {
     x: 700,
     y: 100,
@@ -302,7 +302,7 @@ const oriel = {
   speed: 3.3
 }
 
-const ruairidh = {
+ const ruairidh = {
   position: {
     x: 700,
     y: 100,

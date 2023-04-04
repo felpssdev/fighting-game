@@ -10,6 +10,12 @@ const gForce = 0.4
 // Create canvas screen
 c.fillRect(0, 0, canvas.width, canvas.height)
 
+// Create player
+let player = new Player(kaito)
+
+// Create enemy
+let enemy = new Player(kenji)
+
 // Create background image
 const background = new Sprite({
   position: {
@@ -19,11 +25,6 @@ const background = new Sprite({
   imageSrc: 'img/background.png',
 })
 
-// Create player
-let player = new Player(kaito)
-
-// Create enemy
-let enemy = new Player(kenji)
 
 // All keys that I used to make movements
 const keys = {
