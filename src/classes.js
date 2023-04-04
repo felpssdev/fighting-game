@@ -101,7 +101,7 @@ class Player extends Sprite {
     this.isAttacking = false
     this.currentFrame = 0
     this.framesElapsed = 0
-    this.frameHold = 12
+    this.frameHold = 12  // Player animations speed
     this.sprites = sprites
     this.dead = false
     this.maxJumps = 0
@@ -132,15 +132,15 @@ class Player extends Sprite {
     this.attackHitBox.position.y = this.position.y + this.attackHitBox.offSet.y
 
     // Draw attack hitbox
-    c.fillRect(
-     this.attackHitBox.position.x,
-     this.attackHitBox.position.y,
-     this.attackHitBox.width,
-     this.attackHitBox.height
-    )
+    // c.fillRect(
+    //  this.attackHitBox.position.x,
+    //  this.attackHitBox.position.y,
+    //  this.attackHitBox.width,
+    //  this.attackHitBox.height
+    // )
 
     // Draw character hitbox
-    c.fillRect(this.position.x, this.position.y, this.width, this.height)
+    // c.fillRect(this.position.x, this.position.y, this.width, this.height)
 
     // Allow velocity
     this.position.x += this.velocity.x
