@@ -180,6 +180,66 @@
   speed: 2,
 }
 
+const nix = {
+  position: {
+    x: 300,
+    y: 100,
+  },
+  velocity: {
+    x: 0,
+    y: 0,
+  },
+  imageSrc: './img/Nix/Idle.png',
+  totalFrames: 9,
+  scale: 3.4,
+  offSet: {
+    x: 120,
+    y: 110,
+  },
+  sprites: {
+    idle: {
+      imageSrc: './img/Nix/Idle.png',
+      totalFrames: 9,
+    },
+    run: {
+      imageSrc: './img/Nix/Run.png',
+      totalFrames: 6,
+    },
+    jump: {
+      imageSrc: './img/Nix/Jump.png',
+      totalFrames: 3,
+    },
+    fall: {
+      imageSrc: './img/Nix/Fall.png',
+      totalFrames: 3,
+    },
+    attack1: {
+      imageSrc: './img/Nix/Attack1.png',
+      totalFrames: 12,
+    },
+    takeDamage: {
+      imageSrc: './img/Nix/Take Hit.png',
+      totalFrames: 5,
+    },
+    death: {
+      imageSrc: './img/Nix/Death.png',
+      totalFrames: 23,
+    },
+  },
+  attackBox: {
+    offSet: {
+      x: 20,
+      y: 10,
+    },
+    width: 130,
+    height: 50,
+  },
+  height: 100,
+  damage: 20,
+  name: 'Nix',
+  speed: 4.2,
+}
+
 // Enemies
 
  const kenji = {
@@ -357,7 +417,7 @@
     height: 50,
   },
   height: 110,
-  damage: 10,
+  damage: 13,
   name: 'Ruairidh',
   speed: 4.2
 }

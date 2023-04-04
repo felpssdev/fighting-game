@@ -11,7 +11,7 @@ const gForce = 0.4
 c.fillRect(0, 0, canvas.width, canvas.height)
 
 // Create player
-let player = new Player(kaito)
+let player = new Player(nix)
 
 // Create enemy
 let enemy = new Player(kenji)
@@ -24,7 +24,6 @@ const background = new Sprite({
   },
   imageSrc: 'img/background.png',
 })
-
 
 // All keys that I used to make movements
 const keys = {
@@ -194,50 +193,54 @@ function animate() {
 window.addEventListener('keydown', (event) => {
   // Player keys event
   if (!player.dead) {
-    switch (event.key) {
-      case 'd':
-        keys.d.pressed = true
-        player.lastPressedKey = 'd'
-        break
-      case 'a':
-        keys.a.pressed = true
-        player.lastPressedKey = 'a'
-        break
-      case 'w':
-        if (player.maxJumps != 2) {
-          player.maxJumps++
-          player.velocity.y = -10
-        }
-        break
-      case ' ':
-        if (player.image != player.sprites.attack1.image) {
-          player.attack()
-        }
-        break
+    if (!player.isDead) {
+      switch (event.key) {
+        case 'd':
+          keys.d.pressed = true
+          player.lastPressedKey = 'd'
+          break
+        case 'a':
+          keys.a.pressed = true
+          player.lastPressedKey = 'a'
+          break
+        case 'w':
+          if (player.maxJumps != 2) {
+            player.maxJumps++
+            player.velocity.y = -10
+          }
+          break
+        case ' ':
+          if (player.image != player.sprites.attack1.image) {
+            player.attack()
+          }
+          break
+      }
     }
   }
   // Enemy keys event
   if (!enemy.dead) {
-    switch (event.key) {
-      case 'ArrowRight':
-        keys.ArrowRight.pressed = true
-        enemy.lastPressedKey = 'ArrowRight'
-        break
-      case 'ArrowLeft':
-        keys.ArrowLeft.pressed = true
-        enemy.lastPressedKey = 'ArrowLeft'
-        break
-      case 'ArrowUp':
-        if (enemy.maxJumps != 2) {
-          enemy.maxJumps++
-          enemy.velocity.y = -10
-        }
-        break
-      case 'ArrowDown':
-        if (enemy.image != enemy.sprites.attack1.image) {
-          enemy.attack(true)
-        }
-        break
+    if (!enemy.isDead) {
+      switch (event.key) {
+        case 'ArrowRight':
+          keys.ArrowRight.pressed = true
+          enemy.lastPressedKey = 'ArrowRight'
+          break
+        case 'ArrowLeft':
+          keys.ArrowLeft.pressed = true
+          enemy.lastPressedKey = 'ArrowLeft'
+          break
+        case 'ArrowUp':
+          if (enemy.maxJumps != 2) {
+            enemy.maxJumps++
+            enemy.velocity.y = -10
+          }
+          break
+        case 'ArrowDown':
+          if (enemy.image != enemy.sprites.attack1.image) {
+            enemy.attack(true)
+          }
+          break
+      }
     }
   }
 })
@@ -351,6 +354,7 @@ selectBtn.addEventListener('click', () => {
   selectPlayerMenu.style.display = 'flex'
   playerOptions.style.display = 'block'
   enemyOptions.style.display = 'none'
+  document.querySelector('#title').style.display = 'none'
 })
 
 // Select fighter
@@ -362,7 +366,6 @@ playerNames.forEach((playerName) => {
         startButton.style.display = 'inline'
         playerOptions.style.display = 'none'
         enemyOptions.style.display = 'block'
-        document.querySelector('#title').style.display = 'inline'
         player = createPlayer(kaito)
         break
       case 'Kenji':
@@ -370,27 +373,26 @@ playerNames.forEach((playerName) => {
         mainMenu.style.display = 'block'
         document.querySelector('#title').style.display = 'inline'
         document.querySelector('#select-player').style.display = 'none'
+        document.querySelector('#title').style.display = 'inline'
         enemy = createPlayer(kenji)
         break
       case 'Sir Arthur':
         startButton.style.display = 'inline'
         playerOptions.style.display = 'none'
         enemyOptions.style.display = 'block'
-        document.querySelector('#title').style.display = 'inline'
         player = createPlayer(arthur)
         break
       case 'Oriel Warwicke':
         startButton.style.display = 'inline'
         mainMenu.style.display = 'block'
-        document.querySelector('#title').style.display = 'inline'
         document.querySelector('#select-player').style.display = 'none'
+        document.querySelector('#title').style.display = 'inline'
         enemy = createPlayer(oriel)
         break
       case 'Gunvald':
         startButton.style.display = 'inline'
         playerOptions.style.display = 'none'
         enemyOptions.style.display = 'block'
-        document.querySelector('#title').style.display = 'inline'
         player = createPlayer(gunvald)
         break
       case 'Ruairidh Doylei':
@@ -399,6 +401,12 @@ playerNames.forEach((playerName) => {
         document.querySelector('#title').style.display = 'inline'
         document.querySelector('#select-player').style.display = 'none'
         enemy = createPlayer(ruairidh)
+        break
+      case 'Nix':
+        startButton.style.display = 'inline'
+        playerOptions.style.display = 'none'
+        enemyOptions.style.display = 'block'
+        player = createPlayer(nix)
         break
     }
   })

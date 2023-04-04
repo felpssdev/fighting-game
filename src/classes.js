@@ -104,6 +104,7 @@ class Player extends Sprite {
     this.frameHold = 12  // Player animations speed
     this.sprites = sprites
     this.dead = false
+    this.isDead = false
     this.maxJumps = 0
     this.damage = damage
     this.name = name
@@ -179,7 +180,8 @@ class Player extends Sprite {
   switchSprite(sprite) {
     // Grants that no other action interrupt death animation
     if (this.image === this.sprites.death.image) {
-      if (this.currentFrame === this.sprites.death.totalFrames - 2) {
+      this.isDead = true
+      if (this.currentFrame === this.sprites.death.totalFrames - 1) {
         this.dead = true
       }
       return
