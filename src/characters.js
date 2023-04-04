@@ -13,7 +13,7 @@ const arthur = {
   totalFrames: 8,
   scale: 2.2,
   offSet: {
-    x: 180,
+    x: 170,
     y: 80,
   },
   sprites: {
@@ -59,7 +59,7 @@ const arthur = {
   speed: 2.6,
 }
 
-const samuraiMack = {
+const kaito = {
   position: {
     x: 300,
     y: 100,
@@ -68,40 +68,40 @@ const samuraiMack = {
     x: 0,
     y: 0,
   },
-  imageSrc: './img/samuraiMack/Idle.png',
+  imageSrc: './img/kaito/Idle.png',
   totalFrames: 8,
   scale: 2.2,
   offSet: {
-    x: 215,
+    x: 200,
     y: 118,
   },
   sprites: {
     idle: {
-      imageSrc: './img/samuraiMack/Idle.png',
+      imageSrc: './img/kaito/Idle.png',
       totalFrames: 8,
     },
     run: {
-      imageSrc: './img/samuraiMack/Run.png',
+      imageSrc: './img/kaito/Run.png',
       totalFrames: 8,
     },
     jump: {
-      imageSrc: './img/samuraiMack/Jump.png',
+      imageSrc: './img/kaito/Jump.png',
       totalFrames: 2,
     },
     fall: {
-      imageSrc: './img/samuraiMack/Fall.png',
+      imageSrc: './img/kaito/Fall.png',
       totalFrames: 2,
     },
     attack1: {
-      imageSrc: './img/samuraiMack/Attack1.png',
+      imageSrc: './img/kaito/Attack1.png',
       totalFrames: 6,
     },
     takeDamage: {
-      imageSrc: './img/samuraiMack/Take Hit.png',
+      imageSrc: './img/kaito/Take Hit.png',
       totalFrames: 4,
     },
     death: {
-      imageSrc: './img/samuraiMack/Death.png',
+      imageSrc: './img/kaito/Death.png',
       totalFrames: 6,
     },
   },
@@ -114,7 +114,7 @@ const samuraiMack = {
     height: 50,
   },
   damage: 14,
-  name: 'Samurai Mack',
+  name: 'Samurai Kaito',
   speed: 3,
 }
 
@@ -131,7 +131,7 @@ const gunvald = {
   totalFrames: 10,
   scale: 3.4,
   offSet: {
-    x: 280,
+    x: 250,
     y: 190,
   },
   sprites: {
@@ -192,7 +192,7 @@ const kenji = {
   totalFrames: 4,
   scale: 2.2,
   offSet: {
-    x: 215,
+    x: 200,
     y: 130,
   },
   sprites: {
@@ -293,7 +293,7 @@ const oriel = {
     height: 50,
   },
   damage: 17,
-  name: 'Oriel Warwicke',
+  name: 'Oriel',
   speed: 3.3
 }
 
@@ -352,6 +352,6 @@ const ruairidh = {
     height: 50,
   },
   damage: 10,
-  name: 'Ruairidh Doylei',
+  name: 'Ruairidh',
   speed: 4.2
 }

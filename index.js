@@ -20,7 +20,7 @@ const background = new Sprite({
 })
 
 // Create player
-let player = new Player(samuraiMack)
+let player = new Player(kaito)
 
 // Create enemy
 let enemy = new Player(kenji)
@@ -357,12 +357,12 @@ const playerNames = document.querySelectorAll('.player-name')
 playerNames.forEach((playerName) => {
   playerName.addEventListener('click', (event) => {
     switch (event.target.innerHTML) {
-      case 'Samurai Mack':
+      case 'Samurai Kaito':
         startButton.style.display = 'inline'
         playerOptions.style.display = 'none'
         enemyOptions.style.display = 'block'
         document.querySelector('#title').style.display = 'inline'
-        player = createPlayer(samuraiMack)
+        player = createPlayer(kaito)
         break
       case 'Kenji':
         startButton.style.display = 'inline'

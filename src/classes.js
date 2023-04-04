@@ -7,7 +7,6 @@ class Sprite {
     totalFrames = 1,
     offSet = { x: 0, y: 0 },
   }) {
-
     this.position = position
     this.height = 150
     this.width = 50
@@ -67,11 +66,13 @@ class Player extends Sprite {
     offSet = { x: 0, y: 0 },
     sprites,
     attackBox = {
-        offSet: {}, width: undefined, height: undefined
+      offSet: {},
+      width: undefined,
+      height: undefined,
     },
     damage,
     name,
-    speed
+    speed,
   }) {
     // Inherit Sprite's properties
     super({
@@ -132,8 +133,16 @@ class Player extends Sprite {
     this.attackHitBox.position.y = this.position.y + this.attackHitBox.offSet.y
 
     // Draw attack hitbox
-    // c.fillRect(this.attackHitBox.position.x, this.attackHitBox.position.y, this.attackHitBox.width, this.attackHitBox.height)
-    
+    // c.fillRect(
+    //  this.attackHitBox.position.x,
+    //  this.attackHitBox.position.y,
+    //  this.attackHitBox.width,
+    //  this.attackHitBox.height
+    // )
+
+    // Draw character hitbox
+    // c.fillRect(this.position.x, this.position.y, this.width, this.height)
+
     // Allow velocity
     this.position.x += this.velocity.x
     this.position.y += this.velocity.y
@@ -157,27 +166,25 @@ class Player extends Sprite {
     const swordSound = document.querySelector('#cut-sound-enemy')
 
     if (enemy) {
-        if (!swordSound.muted) {
-            swordSound.play()
-        }
+      if (!swordSound.muted) {
+        swordSound.play()
+      }
     } else {
-        if (!cutSound.muted) {
-            cutSound.play()
-        }
+      if (!cutSound.muted) {
+        cutSound.play()
+      }
     }
   }
 
   // Sprite options
   switchSprite(sprite) {
     // Grants that no other action interrupt death animation
-    if (
-        this.image === this.sprites.death.image
-      ) {
-        if (this.currentFrame === this.sprites.death.totalFrames - 2) {
-            this.dead = true
-        }
-        return
+    if (this.image === this.sprites.death.image) {
+      if (this.currentFrame === this.sprites.death.totalFrames - 2) {
+        this.dead = true
       }
+      return
+    }
 
     // Grants that no other action interrupt attack animation
     if (
@@ -189,11 +196,11 @@ class Player extends Sprite {
 
     // Grants that no other action interrupt take damage animation
     if (
-        this.image === this.sprites.takeDamage.image &&
-        this.currentFrame < this.sprites.takeDamage.totalFrames - 1
-      ) {
-        return
-      }
+      this.image === this.sprites.takeDamage.image &&
+      this.currentFrame < this.sprites.takeDamage.totalFrames - 1
+    ) {
+      return
+    }
 
     // Switch animation
     switch (sprite) {
