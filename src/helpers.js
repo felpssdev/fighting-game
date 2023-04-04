@@ -18,11 +18,15 @@ function decreaseTimer() {
 const playerHealthBar = document.querySelector('#playerHealthBar')
 const enemyHealthBar = document.querySelector('#enemyHealthBar')
 
+// In-game reset button
+const ingameReset = document.querySelector('#stop')
+
 // Verify who wins and display
 function winner(moment) {
   clearTimeout(moment)
   document.querySelector('#display-result').style.display = 'flex'
   document.querySelector('#reset-btn').style.display = 'flex'
+  ingameReset.style.display = 'none'
   if (
     parseInt(playerHealthBar.style.width) ===
     parseInt(enemyHealthBar.style.width)

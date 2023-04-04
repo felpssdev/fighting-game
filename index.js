@@ -311,6 +311,12 @@ window.onload = () => {
   resetBtn.addEventListener('click', () => {
     window.location.reload()
   })
+
+  // In-game reset button
+  const ingameReset = document.querySelector('#stop')
+  ingameReset.addEventListener('click', () => {
+    window.location.reload()
+  })
 }
 
 // Display main menu
@@ -395,12 +401,6 @@ playerNames.forEach((playerName) => {
         break
     }
   })
-})
-
-// In-game reset button
-const ingameReset = document.querySelector('#stop')
-ingameReset.addEventListener('click', () => {
-  window.location.reload()
 })
 
 // Fighters info menu
