@@ -192,6 +192,7 @@ class Player extends Sprite {
   switchSprite(sprite) {
     // Grants that no other action interrupt death animation
     if (this.image === this.sprites.death.image) {
+      this.velocity.x = 0
       this.isDead = true
       if (this.currentFrame === this.sprites.death.totalFrames - 1) {
         this.dead = true

@@ -215,7 +215,7 @@ const nix = {
     },
     attack1: {
       imageSrc: './img/Nix/Attack1.png',
-      totalFrames: 12,
+      totalFrames: 10,
     },
     takeDamage: {
       imageSrc: './img/Nix/Take Hit.png',
